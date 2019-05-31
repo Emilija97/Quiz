@@ -1,0 +1,57 @@
+{
+    "questions": [{
+            "id": 1,
+            "question": "Koje su boje na zastavi Srbije, crvena, bela i ?",
+            "answer1": "zuta",
+            "answer2": "plava",
+            "answer3": "zelena",
+            "answer4": "crvena",
+            "correctAnswer": "plava"
+        },
+        {
+            "id": 2,
+            "question": "Gde je nastala prva cokolada?",
+            "answer1": "U Italiji",
+            "answer2": "U Svajcarskoj",
+            "answer3": "U Austriji",
+            "answer4": "U Nemackoj",
+            "correctAnswer": "U Svajcarskoj"
+        },
+        {
+            "id": 3,
+            "question": "Koji od navedenih gradova ima najvise mostova?",
+            "answer1": "Venecija",
+            "answer2": "Amsterdam",
+            "answer3": "Hamburg",
+            "answer4": "Beograd",
+            "correctAnswer": "Hamburg"
+        },
+        {
+            "id": 4,
+            "question": "Kako se nazivao najveci dinosaurus mesozder koji je ikada postojao na zemlji?",
+            "answer1": "diplodok",
+            "answer2": "tiranosaurus",
+            "answer3": "mesosaurus",
+            "answer4": "spinosaurus",
+            "correctAnswer": "tiranosaurus"
+        },
+        {
+            "id": 5,
+            "question": "Kako se naziva najveca piramidi u Gizi, u Egiptu?",
+            "answer1": "Zevsova",
+            "answer2": "Keopsova",
+            "answer3": "Kefrenova",
+            "answer4": "Mikerinova",
+            "correctAnswer": "Keopsova"
+        },
+        {
+            "id": 6,
+            "question": "Odakle potice kafa?",
+            "answer1": "Iz stare Grcke",
+            "answer2": "Iz Etiopije",
+            "answer3": "Iz Turske",
+            "answer4": "Iz Brazila",
+            "correctAnswer": "Iz Etiopije"
+        }
+    ]
+}

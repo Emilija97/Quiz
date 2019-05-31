@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import { rootReducer } from "./store";
+import { Router } from "react-router";
+import { createBrowserHistory } from "history";
+import { Routes } from "./routers/routes";
+import createSagaMiddleware from "@redux-saga/core";
+import { fetchQuestions } from "./store/actions";
+import { rootSaga } from "./store/sagas";
+import QuestionCounter from "./components/QuestionCounter";
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const sagaMiddleware = createSagaMiddleware();
+const questionStore = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(rootSaga);
+
+const history = createBrowserHistory();
+class App extends Component {
+  render() {
+    return (
+      <Provider store={questionStore}>
+        <Router history={history}>
+          <Routes />
+          <QuestionCounter />
+        </Router>
+      </Provider>
+    );
+  }
 }
 
 export default App;
