@@ -27,7 +27,6 @@ export function fetchQuestions(): FetchQuestions {
   };
 }
 export function addQuestions(questions: Question[]): AddQuestions {
-  console.log("Usao sam u add ");
   return {
     type: ADD_QUESTIONS,
     questions: questions

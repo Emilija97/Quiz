@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { Action } from "redux";
 import { fetchQuestions, addQuestion, deleteQuestion } from "../store/actions";
 import "../styles/AddDelete.css";
+import QuestionCounter from "./QuestionCounter";
 
 interface Props {
   questions: Question[];
@@ -140,6 +141,7 @@ class AddDeleteQuestion extends Component<Props, State> {
             </button>
           </div>
         </div>
+        <QuestionCounter />
       </div>
     );
   }

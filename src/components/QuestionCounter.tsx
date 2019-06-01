@@ -3,7 +3,7 @@ import { AppState } from "../store";
 import { Action } from "redux";
 import { connect } from "react-redux";
 import { Question } from "../models/Question";
-
+import "../styles/ToSelectQuestion.css";
 interface Props {
   questions?: Question[];
 }
@@ -17,7 +17,9 @@ class QuestionCounter extends Component<Props, State> {
     }
     return (
       <div>
-        <p>Total Questions: {this.props.questions.length}</p>
+        <p className="counter">
+          Total Questions: {this.props.questions.length}
+        </p>
       </div>
     );
   }

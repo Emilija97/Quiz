@@ -44,7 +44,6 @@ export function questionsReducer(
       return state.filter((question: Question) => question.id !== questionId);
     }
     default: {
-      console.log("Sad sam u reduceru default");
       return state;
     }
   }

@@ -52,6 +52,78 @@
             "answer3": "Iz Turske",
             "answer4": "Iz Brazila",
             "correctAnswer": "Iz Etiopije"
+        },
+        {
+            "id": 7,
+            "question": "Vrhovni Bog u grckoj mitologiji?",
+            "answer1": "Zevs",
+            "answer2": "Had",
+            "answer3": "Posejdon",
+            "answer4": "Hefest",
+            "correctAnswer": "Zevs"
+        },
+        {
+            "id": 8,
+            "question": "Inke su iz?",
+            "answer1": "Meksika",
+            "answer2": "Brazila",
+            "answer3": "Argentine",
+            "answer4": "Perua",
+            "correctAnswer": "Perua"
+        },
+        {
+            "id": 9,
+            "question": "Kako se zove grcka Boginja ljubavi?",
+            "answer1": "Atina",
+            "answer2": "Afrodita",
+            "answer3": "Venera",
+            "answer4": "Hera",
+            "correctAnswer": "Hera"
+        },
+        {
+            "id": 10,
+            "question": "Katalonija je deo koje zemlje?",
+            "answer1": "Portugala",
+            "answer2": "Maroka",
+            "answer3": "Spanije",
+            "answer4": "Tunisa",
+            "correctAnswer": "Spanije"
+        },
+        {
+            "id": 11,
+            "question": "Kada je poceo II svetski rat?",
+            "answer1": "1940",
+            "answer2": "1939",
+            "answer3": "1941",
+            "answer4": "1945",
+            "correctAnswer": "1939"
+        },
+        {
+            "id": 12,
+            "question": "Koje boje je rubin?",
+            "answer1": "plave",
+            "answer2": "crvene",
+            "answer3": "zelene",
+            "answer4": "zute",
+            "correctAnswer": "crvene"
+        },
+        {
+            "id": 13,
+            "question": "Ko je napisao Odiseju i Ilijadu?",
+            "answer1": "Euripid",
+            "answer2": "Homer",
+            "answer3": "Ezop",
+            "answer4": "Herodot",
+            "correctAnswer": "Homer"
+        },
+        {
+            "id": 14,
+            "question": "Sta je koagulacija?",
+            "answer1": "zgrusavanje",
+            "answer2": "saradnja",
+            "answer3": "ulivanje",
+            "answer4": "razlivanje",
+            "correctAnswer": "zgrusavanje"
         }
     ]
 }

@@ -19,9 +19,7 @@ export function selectedQuestionReducer(
 ) {
   switch (action.type) {
     case SELECT_QUESTION: {
-      console.log("Usao sam u select reducer");
       const { question } = action as SelectQuestion;
-      console.log(`${question.correctAnswer}`);
       return question;
     }
     default:

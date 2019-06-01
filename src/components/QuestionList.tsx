@@ -7,6 +7,7 @@ import * as actions from "../store/actions";
 import "../styles/QuestionList.css";
 import { Color } from "csstype";
 import { Action } from "redux";
+import QuestionCounter from "./QuestionCounter";
 
 interface Props {
   questions: Question[];
@@ -133,6 +134,7 @@ class QuestionList extends Component<Props, State> {
         <button className="next" onClick={() => this.nextQuestion()}>
           Next
         </button>
+        <QuestionCounter />
       </div>
     );
   }

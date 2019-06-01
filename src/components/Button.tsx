@@ -10,8 +10,8 @@ interface Props {
 }
 
 interface State {
-  boja: Color;
   disabled: boolean;
+  boja: Color;
 }
 
 class MojeDugme extends Component<Props, State> {
@@ -33,9 +33,9 @@ class MojeDugme extends Component<Props, State> {
   render() {
     return (
       <button
+        style={{ backgroundColor: this.state.boja }}
         disabled={this.state.disabled}
         className="dugme"
-        style={{ backgroundColor: this.state.boja }}
         onClick={() => {
           this.checkAnswer();
         }}
@@ -49,8 +49,8 @@ class MojeDugme extends Component<Props, State> {
     if (this.props.question.correctAnswer === this.props.naslov) {
       this.props.increaseScore();
       this.setState({
-        boja: "green",
-        disabled: true
+        disabled: true,
+        boja: "green"
       });
     } else {
       this.setState({ boja: "red", disabled: true });

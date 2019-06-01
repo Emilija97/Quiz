@@ -6,6 +6,8 @@ import { selectQuestion } from "../store/actions";
 import { Action } from "redux";
 import * as actions from "../store/actions";
 import "../styles/ToSelectQuestion.css";
+import { Redirect } from "react-router";
+import QuestionCounter from "./QuestionCounter";
 
 interface Props {
   questions: Question[];
@@ -21,6 +23,8 @@ interface State {
   answer3: string;
   answer4: string;
   correctAnswer: string;
+  redirect: boolean;
+  redirectH: boolean;
 }
 const initialState = {
   id: -1,
@@ -29,22 +33,38 @@ const initialState = {
   answer2: "",
   answer3: "",
   answer4: "",
-  correctAnswer: ""
+  correctAnswer: "",
+  redirect: false,
+  redirectH: false
 };
 class ToSelectQuestion extends Component<Props, State> {
+  state = initialState;
   constructor(props: Props) {
     super(props);
   }
 
+  setRedirect = () => {
+    this.setState({
+      redirect: true
+    });
+  };
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to="/SelectedQuestion" />;
+    }
+  };
+
   componentDidMount() {
     if (this.props.questions.length === 1) this.props.fetchQuestions();
   }
+
   render() {
     if (!this.props.questions) {
       return <h1>There isn't any question to select!</h1>;
     }
     return (
       <div id="select">
+        {this.renderRedirect()}
         <h3>Get information what is correct answer on some question:</h3>
         <ul>
           {this.props.questions.map((question: Question) => (
@@ -54,6 +74,7 @@ class ToSelectQuestion extends Component<Props, State> {
                 className="dugmeSelect"
                 onClick={() => {
                   this.props.selectQuestion(question);
+                  this.setRedirect();
                 }}
               >
                 Select

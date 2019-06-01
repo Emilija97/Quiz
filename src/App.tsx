@@ -24,9 +24,9 @@ class App extends Component {
       <Provider store={questionStore}>
         <Router history={history}>
           <Routes />
-          <QuestionCounter />
+          {/* <QuestionCounter /> */}
           {/* <ToSelectQuestion /> */}
-          <SelectedQuestion />
+          {/* <SelectedQuestion /> */}
         </Router>
       </Provider>
     );
