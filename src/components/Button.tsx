@@ -23,12 +23,12 @@ class MojeDugme extends Component<Props, State> {
     };
   }
 
-  componentWillReceiveProps() {
-    //svaki put kad primi novi question, treba da se uhvati ta promena
-    this.setState({
-      boja: "white"
-    });
-  }
+  // componentWillReceiveProps() {
+  //   //svaki put kad primi novi question, treba da se uhvati ta promena
+  //   this.setState({
+  //     boja: "white"
+  //   });
+  // }
 
   render() {
     return (

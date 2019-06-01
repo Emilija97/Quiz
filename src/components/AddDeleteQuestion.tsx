@@ -47,7 +47,7 @@ class AddDeleteQuestion extends Component<Props, State> {
     }
     return (
       <div id="addDelete">
-        <h3>Choose which question do you want to delete:</h3>
+        <h3>Choose action delete or add some question:</h3>
         <div id="izmene">
           <div id="deleteDiv">
             <h3>Delete question:</h3>
