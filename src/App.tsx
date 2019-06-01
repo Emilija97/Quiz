@@ -10,6 +10,8 @@ import createSagaMiddleware from "@redux-saga/core";
 import { fetchQuestions } from "./store/actions";
 import { rootSaga } from "./store/sagas";
 import QuestionCounter from "./components/QuestionCounter";
+import SelectedQuestion from "./components/SelectedQuestion";
+import ToSelectQuestion from "./components/ToSelectQuestion";
 
 const sagaMiddleware = createSagaMiddleware();
 const questionStore = createStore(rootReducer, applyMiddleware(sagaMiddleware));
@@ -23,6 +25,8 @@ class App extends Component {
         <Router history={history}>
           <Routes />
           <QuestionCounter />
+          {/* <ToSelectQuestion /> */}
+          <SelectedQuestion />
         </Router>
       </Provider>
     );

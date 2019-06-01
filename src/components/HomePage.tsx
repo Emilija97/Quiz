@@ -1,19 +1,47 @@
-import * as React from "react";
+import React, { Component, Dispatch } from "react";
 import { Link } from "react-router-dom";
+import { Question } from "../models/Question";
+import { AppState } from "../store";
+import { Action } from "redux";
+import { fetchQuestions } from "../store/actions";
+import { connect } from "react-redux";
+import "../styles/HomePage.css";
 
-class AppRoot extends React.Component<{}> {
-  constructor(p: {}) {
-    super(p);
+interface Props {
+  questions: Question[];
+  fetchQuestions: Function;
+}
+interface State {}
+class AppRoot extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
   }
 
+  componentDidMount() {
+    if (this.props.questions.length === 1) this.props.fetchQuestions();
+  }
   render() {
     return (
-      <div>
+      <div id="pocetna">
         <h2>Welcome to the QUIZ</h2>
         <ul>
           <li>
-            <button>
+            <button id="navigacija">
               <Link to="/QuestionList">Go to quiz</Link>
+            </button>
+          </li>
+          <li>
+            <button id="navigacija">
+              <Link to="/ToSelectQuestion">
+                Go to get information about questions
+              </Link>
+            </button>
+          </li>
+          <li>
+            <button id="navigacija">
+              <Link to="/AddDeleteQuestion">
+                Go to get add new question or delete some
+              </Link>
             </button>
           </li>
         </ul>
@@ -22,4 +50,20 @@ class AppRoot extends React.Component<{}> {
   }
 }
 
-export default AppRoot;
+function mapStateToProps(state: AppState) {
+  return {
+    //prop name <= store slice
+    questions: state.questions //parce state-a iz index.tsx se mapira na prop
+  };
+}
+
+function mapDispatchToProps(dispatch: Dispatch<Action>) {
+  return {
+    fetchQuestions: () => dispatch(fetchQuestions())
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AppRoot);

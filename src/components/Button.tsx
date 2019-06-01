@@ -38,9 +38,6 @@ class MojeDugme extends Component<Props, State> {
         style={{ backgroundColor: this.state.boja }}
         onClick={() => {
           this.checkAnswer();
-          this.setState({
-            disabled: true
-          });
         }}
       >
         {this.props.naslov}
@@ -51,9 +48,12 @@ class MojeDugme extends Component<Props, State> {
   checkAnswer = () => {
     if (this.props.question.correctAnswer === this.props.naslov) {
       this.props.increaseScore();
-      this.setState({ boja: "green" });
+      this.setState({
+        boja: "green",
+        disabled: true
+      });
     } else {
-      this.setState({ boja: "red" });
+      this.setState({ boja: "red", disabled: true });
     }
   };
 }

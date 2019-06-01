@@ -1,6 +1,13 @@
 import { Question } from "../models/Question";
 import { Action } from "redux";
-import { ADD_QUESTIONS, AddQuestions } from "./actions";
+import {
+  ADD_QUESTIONS,
+  AddQuestions,
+  ADD_QUESTION,
+  AddQuestion,
+  DELETE_QUESTION,
+  DeleteQuestion
+} from "./actions";
 
 const initialState: Question[] = [
   {
@@ -20,13 +27,21 @@ export function questionsReducer(
 ) {
   switch (action.type) {
     case ADD_QUESTIONS: {
-      console.log("Sad sam u reduceru");
       const { questions } = action as AddQuestions;
+      //da napravi random niz
       questions.sort(function() {
         return 0.5 - Math.random();
       });
-      console.log("Iz reducer-a " + questions.length);
+
       return [...state, ...questions];
+    }
+    case ADD_QUESTION: {
+      const { question } = action as AddQuestion;
+      return [...state, question];
+    }
+    case DELETE_QUESTION: {
+      const { questionId } = action as DeleteQuestion;
+      return state.filter((question: Question) => question.id !== questionId);
     }
     default: {
       console.log("Sad sam u reduceru default");
