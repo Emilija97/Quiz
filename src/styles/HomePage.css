@@ -6,6 +6,7 @@ html {
 body {
     display: flex;
     flex-direction: column;
+    position: relative;
     margin: 1%;
     height: 100%;
     background: linear-gradient(#708bd6, #888bd6, #a38bd6, #ac8bd6) fixed;

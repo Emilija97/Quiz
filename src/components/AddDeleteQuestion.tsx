@@ -34,9 +34,6 @@ const initialState = {
 };
 class AddDeleteQuestion extends Component<Props, State> {
   state = initialState;
-  constructor(props: Props) {
-    super(props);
-  }
 
   componentDidMount() {
     //da ne bi doslo do ucitavanja istih pitanja vise puta, nego da moze sa bilo koje stranice
@@ -78,49 +75,49 @@ class AddDeleteQuestion extends Component<Props, State> {
                 name="id"
                 value={this.state.id}
                 onChange={e => this.setState({ id: e.target.valueAsNumber })}
-              />{" "}
+              />
               <label>Question: </label>
               <input
                 type="text"
                 name="question"
                 value={this.state.question}
                 onChange={e => this.setState({ question: e.target.value })}
-              />{" "}
+              />
               <label>Answer 1: </label>
               <input
                 type="text"
                 name="answer1"
                 value={this.state.answer1}
                 onChange={e => this.setState({ answer1: e.target.value })}
-              />{" "}
+              />
               <label>Answer 2: </label>
               <input
                 type="text"
                 name="answer2"
                 value={this.state.answer2}
                 onChange={e => this.setState({ answer2: e.target.value })}
-              />{" "}
+              />
               <label>Answer 3: </label>
               <input
                 type="text"
                 name="answer3"
                 value={this.state.answer3}
                 onChange={e => this.setState({ answer3: e.target.value })}
-              />{" "}
+              />
               <label>Answer 4: </label>
               <input
                 type="text"
                 name="answer4"
                 value={this.state.answer4}
                 onChange={e => this.setState({ answer4: e.target.value })}
-              />{" "}
+              />
               <label>Correct answer: </label>
               <input
                 type="text"
                 name="correctanswer"
                 value={this.state.correctAnswer}
                 onChange={e => this.setState({ correctAnswer: e.target.value })}
-              />{" "}
+              />
               <br />
             </form>
             <button

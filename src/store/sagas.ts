@@ -1,7 +1,6 @@
 import { all, takeEvery, put } from "redux-saga/effects";
 import { FETCH_QUESTIONS, addQuestions } from "./actions";
 import { getAllQuestions } from "../services/question.service";
-import { Question } from "../models/Question";
 
 function* fetchQuestions() {
   const questions = yield getAllQuestions();

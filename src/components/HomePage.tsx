@@ -13,10 +13,6 @@ interface Props {
 }
 interface State {}
 class AppRoot extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-  }
-
   componentDidMount() {
     if (this.props.questions.length === 1) this.props.fetchQuestions();
   }

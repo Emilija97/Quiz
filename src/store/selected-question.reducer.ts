@@ -1,6 +1,5 @@
 import { Action } from "redux";
 import { SELECT_QUESTION, SelectQuestion } from "./actions";
-import { AppState } from ".";
 import { Question } from "../models/Question";
 
 const initialState: Question = {

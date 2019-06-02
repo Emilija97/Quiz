@@ -7,7 +7,6 @@ import { Action } from "redux";
 import * as actions from "../store/actions";
 import "../styles/ToSelectQuestion.css";
 import { Redirect } from "react-router";
-import QuestionCounter from "./QuestionCounter";
 
 interface Props {
   questions: Question[];
@@ -24,7 +23,6 @@ interface State {
   answer4: string;
   correctAnswer: string;
   redirect: boolean;
-  redirectH: boolean;
 }
 const initialState = {
   id: -1,
@@ -34,14 +32,10 @@ const initialState = {
   answer3: "",
   answer4: "",
   correctAnswer: "",
-  redirect: false,
-  redirectH: false
+  redirect: false
 };
 class ToSelectQuestion extends Component<Props, State> {
   state = initialState;
-  constructor(props: Props) {
-    super(props);
-  }
 
   setRedirect = () => {
     this.setState({
