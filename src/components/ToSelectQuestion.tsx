@@ -89,7 +89,6 @@ class ToSelectQuestion extends Component<Props, State> {
 
 function mapStateToProps(state: AppState) {
   return {
-    // prop name <= store slice
     questions: state.questions
   };
 }

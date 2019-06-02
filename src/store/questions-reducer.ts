@@ -11,7 +11,7 @@ import {
 
 const initialState: Question[] = [
   {
-    id: 10,
+    id: 100,
     question: "List kog drveta se nalazi na zastavi Kanade?",
     answer1: "Javor",
     answer2: "Hrast",
@@ -28,7 +28,7 @@ export function questionsReducer(
   switch (action.type) {
     case ADD_QUESTIONS: {
       const { questions } = action as AddQuestions;
-      //da napravi random niz
+      //da napravi random niz koji ucita iz json-a
       questions.sort(function() {
         return 0.5 - Math.random();
       });

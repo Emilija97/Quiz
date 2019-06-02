@@ -39,6 +39,7 @@ class AddDeleteQuestion extends Component<Props, State> {
   }
 
   componentDidMount() {
+    //da ne bi doslo do ucitavanja istih pitanja vise puta, nego da moze sa bilo koje stranice
     if (this.props.questions.length === 1) this.props.fetchQuestions();
   }
   render() {
@@ -47,7 +48,7 @@ class AddDeleteQuestion extends Component<Props, State> {
     }
     return (
       <div id="addDelete">
-        <h3>Choose action delete or add some question:</h3>
+        <h3>Choose action, delete or add some question:</h3>
         <div id="izmene">
           <div id="deleteDiv">
             <h3>Delete question:</h3>
@@ -149,7 +150,6 @@ class AddDeleteQuestion extends Component<Props, State> {
 
 function mapStateToProps(state: AppState) {
   return {
-    // prop name <= store slice
     questions: state.questions
   };
 }

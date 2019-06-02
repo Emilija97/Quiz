@@ -40,7 +40,7 @@ class AppRoot extends Component<Props, State> {
           <li>
             <button id="navigacija">
               <Link to="/AddDeleteQuestion">
-                Go to get add new question or delete some
+                Go to add new question or delete some
               </Link>
             </button>
           </li>
@@ -52,8 +52,7 @@ class AppRoot extends Component<Props, State> {
 
 function mapStateToProps(state: AppState) {
   return {
-    //prop name <= store slice
-    questions: state.questions //parce state-a iz index.tsx se mapira na prop
+    questions: state.questions
   };
 }
 

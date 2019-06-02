@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import MojeDugme from "./Button";
 import * as actions from "../store/actions";
 import "../styles/QuestionList.css";
-import { Color } from "csstype";
 import { Action } from "redux";
 import QuestionCounter from "./QuestionCounter";
 

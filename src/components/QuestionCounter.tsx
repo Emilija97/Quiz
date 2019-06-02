@@ -27,15 +27,12 @@ class QuestionCounter extends Component<Props, State> {
 
 function mapStateToProps(state: AppState) {
   return {
-    // prop name <= store slice
     questions: state.questions
   };
 }
 
 function mapDispatchToProps(dispatch: Dispatch<Action>) {
-  return {
-    // prop name => dispatch action
-  };
+  return {};
 }
 
 export default connect(

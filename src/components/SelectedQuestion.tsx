@@ -58,15 +58,12 @@ class SelectedQuestion extends Component<Props, State> {
 
 function mapStateToProps(state: AppState) {
   return {
-    // prop name <= store slice
     selectedQuestion: state.selected
   };
 }
 
 function mapDispatchToProps(dispatch: Dispatch<Action>) {
-  return {
-    // prop name => dispatch action
-  };
+  return {};
 }
 
 export default connect(
