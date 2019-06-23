@@ -41,7 +41,7 @@ class SelectedQuestion extends Component<Props, State> {
         {this.renderRedirect()}
         <p className="response">
           Odgovor na pitanje: {this.props.selectedQuestion.question}{" "}
-          {this.props.selectedQuestion.correctAnswer}
+          {this.props.selectedQuestion.answer}
         </p>
         <button
           className="back"

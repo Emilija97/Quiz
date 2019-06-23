@@ -22,6 +22,7 @@ interface State {
   answer3: string;
   answer4: string;
   correctAnswer: string;
+  answer: string;
 }
 const initialState = {
   id: 0,
@@ -30,7 +31,8 @@ const initialState = {
   answer2: "",
   answer3: "",
   answer4: "",
-  correctAnswer: ""
+  correctAnswer: "",
+  answer: ""
 };
 class AddDeleteQuestion extends Component<Props, State> {
   state = initialState;
@@ -83,40 +85,47 @@ class AddDeleteQuestion extends Component<Props, State> {
                 value={this.state.question}
                 onChange={e => this.setState({ question: e.target.value })}
               />
-              <label>Answer 1: </label>
+              <label>Answer A: </label>
               <input
                 type="text"
                 name="answer1"
                 value={this.state.answer1}
                 onChange={e => this.setState({ answer1: e.target.value })}
               />
-              <label>Answer 2: </label>
+              <label>Answer B: </label>
               <input
                 type="text"
                 name="answer2"
                 value={this.state.answer2}
                 onChange={e => this.setState({ answer2: e.target.value })}
               />
-              <label>Answer 3: </label>
+              <label>Answer C: </label>
               <input
                 type="text"
                 name="answer3"
                 value={this.state.answer3}
                 onChange={e => this.setState({ answer3: e.target.value })}
               />
-              <label>Answer 4: </label>
+              <label>Answer D: </label>
               <input
                 type="text"
                 name="answer4"
                 value={this.state.answer4}
                 onChange={e => this.setState({ answer4: e.target.value })}
               />
-              <label>Correct answer: </label>
+              <label>Correct answer is A, B, C or D: </label>
               <input
                 type="text"
                 name="correctanswer"
                 value={this.state.correctAnswer}
                 onChange={e => this.setState({ correctAnswer: e.target.value })}
+              />
+              <label>Write full correct answer: </label>
+              <input
+                type="text"
+                name="correctanswer"
+                value={this.state.answer}
+                onChange={e => this.setState({ answer: e.target.value })}
               />
               <br />
             </form>
@@ -130,7 +139,8 @@ class AddDeleteQuestion extends Component<Props, State> {
                   answer2: this.state.answer2,
                   answer3: this.state.answer3,
                   answer4: this.state.answer4,
-                  correctAnswer: this.state.correctAnswer
+                  correctAnswer: this.state.correctAnswer,
+                  answer: this.state.answer
                 };
                 this.props.addQuestion(question);
               }}

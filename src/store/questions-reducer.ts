@@ -17,7 +17,8 @@ const initialState: Question[] = [
     answer2: "Hrast",
     answer3: "Kesten",
     answer4: "Ginko",
-    correctAnswer: "Javor"
+    correctAnswer: "A",
+    answer: "Javor"
   }
 ];
 

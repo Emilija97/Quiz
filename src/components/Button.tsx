@@ -7,6 +7,9 @@ interface Props {
   naslov: string;
   question: Question;
   increaseScore: Function;
+  flagGame: boolean;
+  togglePopup: Function;
+  answer: string;
 }
 
 interface State {
@@ -39,14 +42,17 @@ class MojeDugme extends Component<Props, State> {
   }
 
   checkAnswer = () => {
-    if (this.props.question.correctAnswer === this.props.naslov) {
+    if (this.props.question.correctAnswer === this.props.answer) {
       this.props.increaseScore();
       this.setState({
         disabled: true,
         boja: "green"
       });
+    } else if (this.props.flagGame === true) {
+      this.setState({ boja: "red", disabled: true });
     } else {
       this.setState({ boja: "red", disabled: true });
+      setTimeout(() => this.props.togglePopup(), 500);
     }
   };
 }

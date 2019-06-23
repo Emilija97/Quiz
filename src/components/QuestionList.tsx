@@ -12,7 +12,8 @@ import Popup from "./Forma";
 interface Props {
   questions: Question[];
   fetchQ: Function;
-  dispatch: any;
+  numberOfQuestions: number;
+  flag: boolean;
 }
 
 interface State {
@@ -25,6 +26,7 @@ interface State {
   recently: number;
   score: number;
   showPopup: boolean;
+  flagGame: boolean;
 }
 
 const initialState = {
@@ -36,7 +38,8 @@ const initialState = {
   answer4: "",
   recently: 0,
   score: 0,
-  showPopup: false
+  showPopup: false,
+  flagGame: false
 };
 
 class QuestionList extends Component<Props, State> {
@@ -57,10 +60,18 @@ class QuestionList extends Component<Props, State> {
   }
 
   nextQuestion() {
-    if (this.state.recently === this.props.questions.length) {
-      this.togglePopup();
+    if (this.props.numberOfQuestions === undefined) {
+      if (this.state.recently === this.props.questions.length) {
+        this.togglePopup();
+      } else {
+        this.pushData(this.state.recently);
+      }
     } else {
-      this.pushData(this.state.recently);
+      if (this.state.recently === this.props.numberOfQuestions) {
+        this.togglePopup();
+      } else {
+        this.pushData(this.state.recently);
+      }
     }
   }
 
@@ -80,6 +91,21 @@ class QuestionList extends Component<Props, State> {
     window.location.reload();
   }
 
+  prikazi() {
+    if (this.props.numberOfQuestions !== undefined) {
+      return (
+        <p className="result">
+          {this.state.score} / {this.props.numberOfQuestions}
+        </p>
+      );
+    } else
+      return (
+        <p className="result">
+          {this.state.score} / {this.props.questions.length}
+        </p>
+      );
+  }
+
   pushData(recently: number) {
     this.setState({
       question: this.props.questions[recently].question,
@@ -90,6 +116,30 @@ class QuestionList extends Component<Props, State> {
       id: this.props.questions[recently].id,
       recently: this.state.recently + 1
     });
+  }
+
+  callPopup() {
+    if (this.state.showPopup) {
+      if (this.props.numberOfQuestions === undefined) {
+        return (
+          <Popup
+            score={this.state.score}
+            maxScore={this.props.questions.length}
+            closePopup={this.togglePopup} //closePopup = {this.togglePopup.bind(this)}
+            restartGame={this.restartGame}
+          />
+        );
+      } else {
+        return (
+          <Popup
+            score={this.state.score}
+            maxScore={this.props.numberOfQuestions}
+            closePopup={this.togglePopup} //closePopup = {this.togglePopup.bind(this)}
+            restartGame={this.restartGame}
+          />
+        );
+      }
+    }
   }
 
   render() {
@@ -109,29 +159,39 @@ class QuestionList extends Component<Props, State> {
     return (
       <div className="maliDiv" key={id}>
         <p className="question">{question}</p>
-        <p className="result">
-          {this.state.score}/{this.props.questions.length}
-        </p>
+        {this.prikazi()}
         <div id="dugmad">
           <MojeDugme
             increaseScore={this.handleIncreaseScore}
             question={this.props.questions[recently - 1]}
             naslov={answer1}
+            flagGame={this.props.flag}
+            togglePopup={this.togglePopup}
+            answer="A"
           />
           <MojeDugme
             increaseScore={this.handleIncreaseScore}
             question={this.props.questions[recently - 1]}
             naslov={answer2}
+            flagGame={this.props.flag}
+            togglePopup={this.togglePopup}
+            answer="B"
           />
           <MojeDugme
             increaseScore={this.handleIncreaseScore}
             question={this.props.questions[recently - 1]}
             naslov={answer3}
+            flagGame={this.props.flag}
+            togglePopup={this.togglePopup}
+            answer="C"
           />
           <MojeDugme
             increaseScore={this.handleIncreaseScore}
             question={this.props.questions[recently - 1]}
             naslov={answer4}
+            flagGame={this.props.flag}
+            togglePopup={this.togglePopup}
+            answer="D"
           />
         </div>
         <button className="next" onClick={() => this.nextQuestion()}>
@@ -140,14 +200,8 @@ class QuestionList extends Component<Props, State> {
 
         <QuestionCounter />
         {/* proverava da li je showPopup true kako bi prikazao formu ili null */}
-        {this.state.showPopup ? (
-          <Popup
-            score={this.state.score}
-            maxScore={this.props.questions.length}
-            closePopup={this.togglePopup} //closePopup = {this.togglePopup.bind(this)}
-            restartGame={this.restartGame}
-          />
-        ) : null}
+
+        {this.callPopup()}
       </div>
     );
   }

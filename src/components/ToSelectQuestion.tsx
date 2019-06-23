@@ -9,8 +9,8 @@ import "../styles/ToSelectQuestion.css";
 import { Redirect } from "react-router";
 
 interface Props {
-  questions: Question[];
-  fetchQuestions: Function;
+  questionList: Question[];
+  fetchNumberOfQuestions: Function;
   selectQuestion: Function;
 }
 
@@ -49,21 +49,22 @@ class ToSelectQuestion extends Component<Props, State> {
   };
 
   componentDidMount() {
-    if (this.props.questions.length === 1) this.props.fetchQuestions();
+    if (this.props.questionList.length === 1)
+      this.props.fetchNumberOfQuestions();
   }
 
   render() {
-    if (!this.props.questions) {
+    if (!this.props.questionList) {
       return <h1>There isn't any question to select!</h1>;
     }
     return (
       <div id="select">
         {this.renderRedirect()}
         <h3>Get information what is correct answer on some question:</h3>
-        <ul>
-          {this.props.questions.map((question: Question) => (
+        <ol>
+          {this.props.questionList.map((question: Question) => (
             <li key={question.id}>
-              <p>{question.question} </p>
+              <p className="selectP">{question.question} </p>
               <button
                 className="dugmeSelect"
                 onClick={() => {
@@ -75,7 +76,15 @@ class ToSelectQuestion extends Component<Props, State> {
               </button>
             </li>
           ))}
-        </ul>
+        </ol>
+        <button
+          className="dugmeLoad"
+          onClick={() => {
+            this.props.fetchNumberOfQuestions();
+          }}
+        >
+          Load more questions
+        </button>
       </div>
     );
   }
@@ -83,14 +92,14 @@ class ToSelectQuestion extends Component<Props, State> {
 
 function mapStateToProps(state: AppState) {
   return {
-    questions: state.questions
+    questionList: state.questionList
   };
 }
 
 function mapDispatchToProps(dispatch: Dispatch<Action>) {
   return {
     selectQuestion: (question: Question) => dispatch(selectQuestion(question)),
-    fetchQuestions: () => dispatch(actions.fetchQuestions())
+    fetchNumberOfQuestions: () => dispatch(actions.fetchNumberOfQuestions())
   };
 }
 

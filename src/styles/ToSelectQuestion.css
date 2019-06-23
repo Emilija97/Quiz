@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: column;
     align-content: center;
-    align-items: left;
-    width: 400px;
+    align-items: center;
+    width: 1000px;
 }
 
 h3 {
@@ -14,11 +14,13 @@ h3 {
 
 li {
     text-align: left;
+    align-items: center;
     font-family: "Times New Roman";
     font-size: 18px;
 }
 
 .dugmeSelect,
+.dugmeLoad,
 .back {
     height: 25px;
     font-size: 18px;
@@ -32,12 +34,17 @@ li {
     font-weight: bold;
 }
 
-.back {
+.back,
+.dugmeLoad {
     width: 300px;
 }
 
 .dugmeSelect {
     width: 100px;
+}
+
+.dugmeLoad {
+    margin-bottom: 2%;
 }
 
 .response,
@@ -46,6 +53,10 @@ li {
     font-size: 20px;
     font-weight: bold;
     font-style: italic;
+}
+
+.selectP {
+    width: 600px;
 }
 
 @media (max-width: 600px) {

@@ -5,6 +5,7 @@ import QuestionList from "../components/QuestionList";
 import ToSelectQuestion from "../components/ToSelectQuestion";
 import SelectedQuestion from "../components/SelectedQuestion";
 import AddDeleteQuestion from "../components/AddDeleteQuestion";
+import ChosenNumber from "../components/ChosenNumber";
 
 export const Routes = () => (
   <Switch>
@@ -13,6 +14,7 @@ export const Routes = () => (
     <Route path={"/ToSelectQuestion"} component={ToSelectQuestion} />
     <Route path={"/SelectedQuestion"} component={SelectedQuestion} />
     <Route path={"/AddDeleteQuestion"} component={AddDeleteQuestion} />
+    <Route path={"/ChosenNumber"} component={ChosenNumber} />
     <Redirect to={"/"} />
   </Switch>
 );

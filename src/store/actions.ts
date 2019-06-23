@@ -6,6 +6,8 @@ export const ADD_QUESTIONS = "ADD QUESTIONS";
 export const SELECT_QUESTION = "SELECT QUESTION";
 export const ADD_QUESTION = "ADD QUESTION";
 export const DELETE_QUESTION = "DELETE QUESTION";
+export const FETCH_NUMQUESTIONS = "FETCH NUMQUESTIONS";
+export const ADD_NUMQUESTIONS = "ADD NUMQUESTIONS";
 
 export interface FetchQuestions extends Action {}
 export interface AddQuestions extends Action {
@@ -19,6 +21,10 @@ export interface AddQuestion extends Action {
 }
 export interface DeleteQuestion extends Action {
   questionId: number;
+}
+export interface FetchNumberOfQuestions extends Action {}
+export interface AddNumQuestions extends Action {
+  questionList: Question[];
 }
 
 export function fetchQuestions(): FetchQuestions {
@@ -48,5 +54,17 @@ export function deleteQuestion(questionId: number): DeleteQuestion {
   return {
     type: DELETE_QUESTION,
     questionId
+  };
+}
+
+export function fetchNumberOfQuestions(): FetchNumberOfQuestions {
+  return {
+    type: FETCH_NUMQUESTIONS
+  };
+}
+export function addNumQuestions(questionList: Question[]): AddNumQuestions {
+  return {
+    type: ADD_NUMQUESTIONS,
+    questionList
   };
 }

@@ -40,6 +40,13 @@ class AppRoot extends Component<Props, State> {
               </Link>
             </button>
           </li>
+          <li>
+            <button id="navigacija">
+              <Link to="/ChosenNumber">
+                Play quiz with specific number of question
+              </Link>
+            </button>
+          </li>
         </ul>
       </div>
     );

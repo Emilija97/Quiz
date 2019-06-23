@@ -79,6 +79,12 @@
     text-align: center;
 }
 
+input {
+    width: 295px;
+    height: 20px;
+    border-radius: 7px;
+}
+
 @media (max-width: 500px) {
     .dugme,
     .next {
