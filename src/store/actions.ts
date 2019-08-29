@@ -8,6 +8,8 @@ export const ADD_QUESTION = "ADD QUESTION";
 export const DELETE_QUESTION = "DELETE QUESTION";
 export const FETCH_NUMQUESTIONS = "FETCH NUMQUESTIONS";
 export const ADD_NUMQUESTIONS = "ADD NUMQUESTIONS";
+export const FETCH_NEW_QUESTION = "FETCH NEW QUESTION";
+export const DELETE_QUESTION_SAGA = "DELETE QUESTION SAGA";
 
 export interface FetchQuestions extends Action {}
 export interface AddQuestions extends Action {
@@ -22,7 +24,13 @@ export interface AddQuestion extends Action {
 export interface DeleteQuestion extends Action {
   questionId: number;
 }
+export interface DeleteQuestionSaga extends Action {
+  questionId: number;
+}
 export interface FetchNumberOfQuestions extends Action {}
+export interface FetchNewQuestion extends Action {
+  question: Question;
+}
 export interface AddNumQuestions extends Action {
   questionList: Question[];
 }
@@ -56,7 +64,12 @@ export function deleteQuestion(questionId: number): DeleteQuestion {
     questionId
   };
 }
-
+export function deleteQuestionSaga(questionId: number): DeleteQuestionSaga {
+  return {
+    type: DELETE_QUESTION_SAGA,
+    questionId
+  };
+}
 export function fetchNumberOfQuestions(): FetchNumberOfQuestions {
   return {
     type: FETCH_NUMQUESTIONS
@@ -66,5 +79,12 @@ export function addNumQuestions(questionList: Question[]): AddNumQuestions {
   return {
     type: ADD_NUMQUESTIONS,
     questionList
+  };
+}
+
+export function fetchNewQuestion(question: Question): FetchNewQuestion {
+  return {
+    type: FETCH_NEW_QUESTION,
+    question
   };
 }

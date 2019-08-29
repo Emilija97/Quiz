@@ -9,6 +9,14 @@ import {
   DeleteQuestion
 } from "./actions";
 
+// export interface QuestionState {
+//   questions: Question[]
+// }
+
+// const initialState: QuestionState = {
+//   questions: []
+// };
+
 const initialState: Question[] = [
   {
     id: 100,
@@ -17,11 +25,11 @@ const initialState: Question[] = [
     answer2: "Hrast",
     answer3: "Kesten",
     answer4: "Ginko",
-    correctAnswer: "A",
-    answer: "Javor"
+    correctAnswer: "A"
   }
 ];
 
+// const initialState: Question[] = [];
 export function questionsReducer(
   state: Question[] = initialState,
   action: Action
@@ -33,7 +41,6 @@ export function questionsReducer(
       questions.sort(function() {
         return 0.5 - Math.random();
       });
-
       return [...state, ...questions];
     }
     case ADD_QUESTION: {

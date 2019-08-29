@@ -32,6 +32,7 @@ class SelectedQuestion extends Component<Props, State> {
       return <Redirect to="/ToSelectQuestion" />;
     }
   };
+
   render() {
     if (!this.props.selectedQuestion) {
       return <p>Selektovano pitanje: -</p>;
@@ -41,7 +42,13 @@ class SelectedQuestion extends Component<Props, State> {
         {this.renderRedirect()}
         <p className="response">
           Odgovor na pitanje: {this.props.selectedQuestion.question}{" "}
-          {this.props.selectedQuestion.answer}
+          {this.props.selectedQuestion.correctAnswer === "A"
+            ? this.props.selectedQuestion.answer1
+            : this.props.selectedQuestion.correctAnswer === "B"
+            ? this.props.selectedQuestion.answer2
+            : this.props.selectedQuestion.correctAnswer === "C"
+            ? this.props.selectedQuestion.answer3
+            : this.props.selectedQuestion.answer4}
         </p>
         <button
           className="back"

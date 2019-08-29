@@ -3,15 +3,19 @@ import { Question } from "../models/Question";
 import { AppState } from "../store";
 import { connect } from "react-redux";
 import { Action } from "redux";
-import { fetchQuestions, addQuestion, deleteQuestion } from "../store/actions";
+import {
+  fetchQuestions,
+  deleteQuestionSaga,
+  fetchNewQuestion
+} from "../store/actions";
 import "../styles/AddDelete.css";
 import QuestionCounter from "./QuestionCounter";
 
 interface Props {
   questions: Question[];
   fetchQuestions: Function;
-  deleteQuestion: Function;
-  addQuestion: Function;
+  deleteQuestionSaga: Function;
+  fetchNewQuestion: Function;
 }
 
 interface State {
@@ -22,7 +26,6 @@ interface State {
   answer3: string;
   answer4: string;
   correctAnswer: string;
-  answer: string;
 }
 const initialState = {
   id: 0,
@@ -31,8 +34,7 @@ const initialState = {
   answer2: "",
   answer3: "",
   answer4: "",
-  correctAnswer: "",
-  answer: ""
+  correctAnswer: ""
 };
 class AddDeleteQuestion extends Component<Props, State> {
   state = initialState;
@@ -58,7 +60,7 @@ class AddDeleteQuestion extends Component<Props, State> {
                   <button
                     className="deleteBtn"
                     onClick={() => {
-                      this.props.deleteQuestion(question.id);
+                      this.props.deleteQuestionSaga(question.id);
                     }}
                   >
                     Delete
@@ -120,13 +122,7 @@ class AddDeleteQuestion extends Component<Props, State> {
                 value={this.state.correctAnswer}
                 onChange={e => this.setState({ correctAnswer: e.target.value })}
               />
-              <label>Write full correct answer: </label>
-              <input
-                type="text"
-                name="correctanswer"
-                value={this.state.answer}
-                onChange={e => this.setState({ answer: e.target.value })}
-              />
+
               <br />
             </form>
             <button
@@ -139,10 +135,9 @@ class AddDeleteQuestion extends Component<Props, State> {
                   answer2: this.state.answer2,
                   answer3: this.state.answer3,
                   answer4: this.state.answer4,
-                  correctAnswer: this.state.correctAnswer,
-                  answer: this.state.answer
+                  correctAnswer: this.state.correctAnswer
                 };
-                this.props.addQuestion(question);
+                this.props.fetchNewQuestion(question);
               }}
             >
               Add
@@ -164,8 +159,10 @@ function mapStateToProps(state: AppState) {
 function mapDispatchToProps(dispatch: Dispatch<Action>) {
   return {
     fetchQuestions: () => dispatch(fetchQuestions()),
-    addQuestion: (question: Question) => dispatch(addQuestion(question)),
-    deleteQuestion: (questionId: number) => dispatch(deleteQuestion(questionId))
+    fetchNewQuestion: (question: Question) =>
+      dispatch(fetchNewQuestion(question)),
+    deleteQuestionSaga: (questionId: number) =>
+      dispatch(deleteQuestionSaga(questionId))
   };
 }
 
