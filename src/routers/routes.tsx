@@ -6,10 +6,12 @@ import ToSelectQuestion from "../components/ToSelectQuestion";
 import SelectedQuestion from "../components/SelectedQuestion";
 import AddDeleteQuestion from "../components/AddDeleteQuestion";
 import ChosenNumber from "../components/ChosenNumber";
+import ShowResults from "../components/ShowResults";
 
 export const Routes = () => (
   <Switch>
     <Route exact path={"/"} component={HomePage} />
+    <Route path={"/ShowResults"} component={ShowResults} />
     <Route path={"/QuestionList"} component={QuestionList} />
     <Route path={"/ToSelectQuestion"} component={ToSelectQuestion} />
     <Route path={"/SelectedQuestion"} component={SelectedQuestion} />

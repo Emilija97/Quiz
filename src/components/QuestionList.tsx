@@ -11,7 +11,7 @@ import Popup from "./Forma";
 
 interface Props {
   questions: Question[];
-  fetchQ: Function;
+  fetchQuestions: Function;
   numberOfQuestions: number;
   flag: boolean;
 }
@@ -43,9 +43,9 @@ const initialState = {
 };
 
 class QuestionList extends Component<Props, State> {
-  state = initialState;
   constructor(props: Props) {
     super(props);
+    this.state = initialState;
 
     this.nextQuestion = this.nextQuestion.bind(this);
     this.handleIncreaseScore = this.handleIncreaseScore.bind(this);
@@ -53,8 +53,8 @@ class QuestionList extends Component<Props, State> {
   }
 
   componentDidMount() {
-    if (this.props.questions.length === 1) {
-      this.props.fetchQ();
+    if (this.props.questions.length === 0) {
+      this.props.fetchQuestions();
     }
     this.pushData(this.state.recently);
   }
@@ -107,15 +107,17 @@ class QuestionList extends Component<Props, State> {
   }
 
   pushData(recently: number) {
-    this.setState({
-      question: this.props.questions[recently].question,
-      answer1: this.props.questions[recently].answer1,
-      answer2: this.props.questions[recently].answer2,
-      answer3: this.props.questions[recently].answer3,
-      answer4: this.props.questions[recently].answer4,
-      id: this.props.questions[recently].id,
-      recently: this.state.recently + 1
-    });
+    if (this.props.questions.length !== 0) {
+      this.setState({
+        question: this.props.questions[recently].question,
+        answer1: this.props.questions[recently].answer1,
+        answer2: this.props.questions[recently].answer2,
+        answer3: this.props.questions[recently].answer3,
+        answer4: this.props.questions[recently].answer4,
+        id: this.props.questions[recently].id,
+        recently: this.state.recently + 1
+      });
+    }
   }
 
   callPopup() {
@@ -143,19 +145,12 @@ class QuestionList extends Component<Props, State> {
   }
 
   render() {
-    let {
-      recently,
-      question,
-      answer1,
-      answer2,
-      answer3,
-      answer4,
-      id
-    } = this.state;
+    let { recently, question, answer1, answer2, answer3, answer4, id } = this.state;
 
-    if (!this.props.questions) {
-      return <h1>No questions</h1>;
+    if (this.props.questions.length === 0) {
+      return <h3>No questions</h3>;
     }
+
     return (
       <div className="maliDiv" key={id}>
         <p className="question">{question}</p>
@@ -215,7 +210,7 @@ function mapStateToProps(state: AppState) {
 
 function mapDispatchToProps(dispatch: Dispatch<Action>) {
   return {
-    fetchQ: () => dispatch(actions.fetchQuestions())
+    fetchQuestions: () => dispatch(actions.fetchQuestions())
   };
 }
 

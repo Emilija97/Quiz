@@ -21,7 +21,9 @@ li {
 
 .dugmeSelect,
 .dugmeLoad,
-.back {
+.back,
+.deleteButton,
+.backHome {
     height: 25px;
     font-size: 18px;
     margin-top: 3px;
@@ -37,6 +39,11 @@ li {
 .back,
 .dugmeLoad {
     width: 300px;
+}
+
+.deleteButton,
+.backHome {
+    width: 200px;
 }
 
 .dugmeSelect {
@@ -55,7 +62,8 @@ li {
     font-style: italic;
 }
 
-.selectP {
+.selectP,
+.showRes {
     width: 600px;
 }
 

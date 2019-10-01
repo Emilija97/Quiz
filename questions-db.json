@@ -7,8 +7,7 @@
       "answer2": "plava",
       "answer3": "zelena",
       "answer4": "crvena",
-      "correctAnswer": "B",
-      "answer": "plava"
+      "correctAnswer": "B"
     },
     {
       "id": 2,
@@ -17,8 +16,7 @@
       "answer2": "U Svajcarskoj",
       "answer3": "U Austriji",
       "answer4": "U Nemackoj",
-      "correctAnswer": "B",
-      "answer": "U svajcarskoj"
+      "correctAnswer": "B"
     },
     {
       "id": 3,
@@ -27,8 +25,7 @@
       "answer2": "Amsterdam",
       "answer3": "Hamburg",
       "answer4": "Beograd",
-      "correctAnswer": "C",
-      "answer": "Hamburg"
+      "correctAnswer": "C"
     },
     {
       "id": 4,
@@ -37,8 +34,7 @@
       "answer2": "tiranosaurus",
       "answer3": "mesosaurus",
       "answer4": "spinosaurus",
-      "correctAnswer": "B",
-      "answer": "tiranosaurus"
+      "correctAnswer": "B"
     },
     {
       "id": 5,
@@ -47,8 +43,7 @@
       "answer2": "Keopsova",
       "answer3": "Kefrenova",
       "answer4": "Mikerinova",
-      "correctAnswer": "B",
-      "answer": "Keopsova"
+      "correctAnswer": "B"
     },
     {
       "id": 6,
@@ -57,8 +52,7 @@
       "answer2": "Iz Etiopije",
       "answer3": "Iz Turske",
       "answer4": "Iz Brazila",
-      "correctAnswer": "B",
-      "answer": "Iz Etiopije"
+      "correctAnswer": "B"
     },
     {
       "id": 7,
@@ -67,8 +61,7 @@
       "answer2": "Had",
       "answer3": "Posejdon",
       "answer4": "Hefest",
-      "correctAnswer": "A",
-      "answer": "Zevs"
+      "correctAnswer": "A"
     },
     {
       "id": 8,
@@ -77,8 +70,7 @@
       "answer2": "Brazila",
       "answer3": "Argentine",
       "answer4": "Perua",
-      "correctAnswer": "D",
-      "answer": "Perua"
+      "correctAnswer": "D"
     },
     {
       "id": 9,
@@ -87,8 +79,7 @@
       "answer2": "Afrodita",
       "answer3": "Venera",
       "answer4": "Hera",
-      "correctAnswer": "D",
-      "answer": "Hera"
+      "correctAnswer": "D"
     },
     {
       "id": 10,
@@ -97,8 +88,7 @@
       "answer2": "Maroka",
       "answer3": "Spanije",
       "answer4": "Tunisa",
-      "correctAnswer": "C",
-      "answer": "Spanije"
+      "correctAnswer": "C"
     },
     {
       "id": 11,
@@ -107,8 +97,7 @@
       "answer2": "1939",
       "answer3": "1941",
       "answer4": "1945",
-      "correctAnswer": "B",
-      "answer": "1939"
+      "correctAnswer": "B"
     },
     {
       "id": 12,
@@ -117,8 +106,7 @@
       "answer2": "crvene",
       "answer3": "zelene",
       "answer4": "zute",
-      "correctAnswer": "B",
-      "answer": "crvene"
+      "correctAnswer": "B"
     },
     {
       "id": 13,
@@ -127,8 +115,7 @@
       "answer2": "Homer",
       "answer3": "Ezop",
       "answer4": "Herodot",
-      "correctAnswer": "B",
-      "answer": "Homer"
+      "correctAnswer": "B"
     },
     {
       "id": 14,
@@ -137,8 +124,7 @@
       "answer2": "saradnja",
       "answer3": "ulivanje",
       "answer4": "razlivanje",
-      "correctAnswer": "A",
-      "answer": "zgrusavanje"
+      "correctAnswer": "A"
     },
     {
       "id": 15,
@@ -147,8 +133,7 @@
       "answer2": "Monaku",
       "answer3": "Francuskoj",
       "answer4": "Spaniji",
-      "correctAnswer": "C",
-      "answer": "Francuskoj"
+      "correctAnswer": "C"
     },
     {
       "id": 16,
@@ -157,8 +142,7 @@
       "answer2": "slicnosti",
       "answer3": "ravnodusnosti",
       "answer4": "privlacnosti",
-      "correctAnswer": "A",
-      "answer": "suprotnosti"
+      "correctAnswer": "A"
     },
     {
       "id": 17,
@@ -167,8 +151,7 @@
       "answer2": "zakon",
       "answer3": "ustav",
       "answer4": "pravilnik",
-      "correctAnswer": "C",
-      "answer": "ustav"
+      "correctAnswer": "C"
     },
     {
       "id": 18,
@@ -177,8 +160,7 @@
       "answer2": "vetrenjaca",
       "answer3": "siromastva",
       "answer4": "razbojnika",
-      "correctAnswer": "B",
-      "answer": "vetrenjaca"
+      "correctAnswer": "B"
     },
     {
       "id": 19,
@@ -187,8 +169,7 @@
       "answer2": "Takovu",
       "answer3": "Kragujevcu",
       "answer4": "Krusevcu",
-      "correctAnswer": "B",
-      "answer": "Takovu"
+      "correctAnswer": "B"
     },
     {
       "id": 20,
@@ -197,8 +178,7 @@
       "answer2": "podzemlja",
       "answer3": "vode",
       "answer4": "umetnosti",
-      "correctAnswer": "B",
-      "answer": "podzemlja"
+      "correctAnswer": "B"
     },
     {
       "id": 21,
@@ -207,8 +187,7 @@
       "answer2": "Iranki",
       "answer3": "Kineskinja",
       "answer4": "Japanki",
-      "correctAnswer": "A",
-      "answer": "Indijki"
+      "correctAnswer": "A"
     },
     {
       "id": 22,
@@ -217,8 +196,7 @@
       "answer2": "jela",
       "answer3": "vetra",
       "answer4": "vode",
-      "correctAnswer": "C",
-      "answer": "vetra"
+      "correctAnswer": "C"
     },
     {
       "id": 23,
@@ -227,8 +205,7 @@
       "answer2": "muslimana",
       "answer3": "hinduista",
       "answer4": "budista",
-      "correctAnswer": "B",
-      "answer": "muslimana"
+      "correctAnswer": "B"
     },
     {
       "id": 24,
@@ -237,8 +214,7 @@
       "answer2": "aerofobija",
       "answer3": "akvafobija",
       "answer4": "ksenofobija",
-      "correctAnswer": "B",
-      "answer": "aerofobija"
+      "correctAnswer": "B"
     },
     {
       "id": 25,
@@ -247,8 +223,7 @@
       "answer2": "smrt",
       "answer3": "tugu",
       "answer4": "ljubav",
-      "correctAnswer": "A",
-      "answer": "nadu"
+      "correctAnswer": "A"
     },
     {
       "id": 26,
@@ -257,8 +232,7 @@
       "answer2": "Juznoamericki",
       "answer3": "Bermudski",
       "answer4": "Panamski",
-      "correctAnswer": "D",
-      "answer": "Panamski"
+      "correctAnswer": "D"
     },
     {
       "id": 27,
@@ -267,8 +241,7 @@
       "answer2": "Maja",
       "answer3": "Asteka",
       "answer4": "Kreolaca",
-      "correctAnswer": "A",
-      "answer": "Inka"
+      "correctAnswer": "A"
     },
     {
       "id": 28,
@@ -277,8 +250,7 @@
       "answer2": "Donatelo",
       "answer3": "Mikelandjelo Bunuaroti",
       "answer4": "Vinsent Van Gog",
-      "correctAnswer": "A",
-      "answer": "Leonardo da Vinci"
+      "correctAnswer": "A"
     },
     {
       "id": 29,
@@ -287,8 +259,7 @@
       "answer2": "Nis",
       "answer3": "Kragujevac",
       "answer4": "Cacak",
-      "correctAnswer": "D",
-      "answer": "Cacak"
+      "correctAnswer": "D"
     },
     {
       "id": 30,
@@ -297,8 +268,39 @@
       "answer2": "1024 bajta",
       "answer3": "1000 herca",
       "answer4": "1024 herca",
-      "correctAnswer": "B",
-      "answer": "1024 bajta"
+      "correctAnswer": "B"
+    }
+  ],
+  "results": [
+    {
+      "date": "Mon Sep 30 2019 23:00:44 GMT+0200 (Central European Summer Time)",
+      "score": 9,
+      "id": 3
+    },
+    {
+      "date": "Mon Sep 30 2019 23:56:24 GMT+0200 (Central European Summer Time)",
+      "score": 2,
+      "id": 4
+    },
+    {
+      "date": "Tue Oct 01 2019 02:28:12 GMT+0200 (Central European Summer Time)",
+      "score": 5,
+      "id": 6
+    },
+    {
+      "date": "Tue Oct 01 2019 02:32:39 GMT+0200 (Central European Summer Time)",
+      "score": 0,
+      "id": 7
+    },
+    {
+      "date": "Tue Oct 01 2019 02:35:03 GMT+0200 (Central European Summer Time)",
+      "score": 0,
+      "id": 9
+    },
+    {
+      "date": "Tue Oct 01 2019 02:35:06 GMT+0200 (Central European Summer Time)",
+      "score": 0,
+      "id": 10
     }
   ]
 }

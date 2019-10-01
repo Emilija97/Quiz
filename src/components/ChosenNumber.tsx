@@ -15,32 +15,19 @@ interface Props {
 }
 
 interface State {
-  number: number;
-  id: number;
-  question: string;
-  answer1: string;
-  answer2: string;
-  answer3: string;
-  answer4: string;
-  correctAnswer: string;
   redirect: boolean;
   showQuestionList: boolean;
+  number: number;
 }
-const initialState = {
-  number: 1,
-  id: 0,
-  question: "",
-  answer1: "",
-  answer2: "",
-  answer3: "",
-  answer4: "",
-  correctAnswer: "",
-  redirect: false,
-  showQuestionList: false
-};
 class ChosenNumber extends Component<Props, State> {
-  state = initialState;
-
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      redirect: false,
+      showQuestionList: false,
+      number: 0
+    };
+  }
   setRedirect = () => {
     this.setState({
       redirect: true
@@ -59,7 +46,7 @@ class ChosenNumber extends Component<Props, State> {
   }
   componentDidMount() {
     //da ne bi doslo do ucitavanja istih pitanja vise puta, nego da moze sa bilo koje stranice
-    if (this.props.questions.length === 1) this.props.fetchQuestions();
+    if (this.props.questions.length === 0) this.props.fetchQuestions();
   }
   render() {
     if (!this.props.questions) {

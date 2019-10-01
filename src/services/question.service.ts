@@ -1,20 +1,18 @@
 import { Question } from "../models/Question";
-
-const url = "http://localhost:3001/questions";
+import { env } from "../App";
 
 export function getAllQuestions() {
-  return fetch(url).then(response => response.json());
+  return fetch(`${env.url}/questions`).then(response => response.json());
 }
 
 export function postNewQuestion(question: Question) {
-  return fetch(url, {
+  return fetch(`${env.url}/questions`, {
     method: "POST",
     headers: {
       Accept: "application/json, text/plain, */*",
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      id: question.id,
       question: question.question,
       answer1: question.answer1,
       answer2: question.answer2,
@@ -27,7 +25,7 @@ export function postNewQuestion(question: Question) {
 
 export function deleteQuestionFromApi(questionId: number) {
   console.log("Usao sam u service i moj id je: " + questionId);
-  return fetch(`${url}/${questionId}`, {
+  return fetch(`${env.url}/questions/${questionId}`, {
     method: "DELETE"
   })
     .then(() => console.log("Deleted question with id: " + questionId))
@@ -35,7 +33,7 @@ export function deleteQuestionFromApi(questionId: number) {
 }
 
 export function getNumberOfQuestions(questionNumber: number) {
-  return fetch(url)
+  return fetch(`${env.url}/questions`)
     .then(response => response.json())
     .then(response =>
       response.slice(

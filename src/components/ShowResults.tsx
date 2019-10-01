@@ -1,23 +1,24 @@
 import React, { Component, Dispatch } from "react";
-import { Question } from "../models/Question";
 import { AppState } from "../store";
 import { connect } from "react-redux";
-import { selectQuestion } from "../store/actions";
+import { fetchResults } from "../store/actions";
 import { Action } from "redux";
 import * as actions from "../store/actions";
 import "../styles/ToSelectQuestion.css";
 import { Redirect } from "react-router";
+import { Result } from "../models/Result";
 
 interface Props {
-  questionList: Question[];
-  fetchNumberOfQuestions: Function;
-  selectQuestion: Function;
+  results: Result[];
+  fetchResults: Function;
+  deleteResult: Function;
 }
 
 interface State {
   redirect: boolean;
 }
-class ToSelectQuestion extends Component<Props, State> {
+
+class ShowResults extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -31,45 +32,46 @@ class ToSelectQuestion extends Component<Props, State> {
   };
   renderRedirect = () => {
     if (this.state.redirect) {
-      return <Redirect to="/SelectedQuestion" />;
+      return <Redirect to="/HomePage" />;
     }
   };
 
   componentDidMount() {
-    if (this.props.questionList.length === 0) this.props.fetchNumberOfQuestions();
+    if (this.props.results.length === 0) this.props.fetchResults();
   }
 
   render() {
-    if (!this.props.questionList) {
-      return <h1>There isn't any question to select!</h1>;
+    if (!this.props.results) {
+      return <h1>There isn't any result in database!</h1>;
     }
     return (
       <div id="select">
         {this.renderRedirect()}
-        <h3>Get information what is correct answer on some question:</h3>
+        <h3>See achieved results in the quiz:</h3>
         <ol>
-          {this.props.questionList.map((question: Question) => (
-            <li key={question.id}>
-              <p className="selectP">{question.question} </p>
+          {this.props.results.map((result: Result) => (
+            <li key={result.id}>
+              <h5>Date and Time of achieved result:</h5>
+              <p className="showRes">{result.date} </p>
+              <p className="showRes">Achieved result: {result.score} </p>
               <button
-                className="dugmeSelect"
+                className="deleteButton"
                 onClick={() => {
-                  this.props.selectQuestion(question);
-                  this.setRedirect();
+                  this.props.deleteResult(result.id);
                 }}
               >
-                Select
+                Delete result
               </button>
             </li>
           ))}
         </ol>
         <button
-          className="dugmeLoad"
+          className="backHome"
           onClick={() => {
-            this.props.fetchNumberOfQuestions();
+            this.setRedirect();
           }}
         >
-          Load more questions
+          Back to the home page
         </button>
       </div>
     );
@@ -78,18 +80,18 @@ class ToSelectQuestion extends Component<Props, State> {
 
 function mapStateToProps(state: AppState) {
   return {
-    questionList: state.questionList
+    results: state.results
   };
 }
 
 function mapDispatchToProps(dispatch: Dispatch<Action>) {
   return {
-    selectQuestion: (question: Question) => dispatch(selectQuestion(question)),
-    fetchNumberOfQuestions: () => dispatch(actions.fetchNumberOfQuestions())
+    fetchResults: () => dispatch(fetchResults()),
+    deleteResult: (resultId: number) => dispatch(actions.deleteResult(resultId))
   };
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ToSelectQuestion);
+)(ShowResults);

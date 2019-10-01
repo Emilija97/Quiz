@@ -1,25 +1,43 @@
-import React, { Component } from "react";
+import React, { Component, Dispatch } from "react";
 import "../styles/QuestionList.css";
 import { Redirect } from "react-router";
+import { connect } from "react-redux";
+import { AppState } from "../store";
+import { Action } from "redux";
+import { Result } from "../models/Result";
+import * as actions from "../store/actions";
 
 interface Props {
   score: number;
   maxScore: number;
   closePopup: Function;
   restartGame: Function;
+  saveResult: Function;
+  fetchQuestions: Function;
 }
 
 interface State {
   redirectH: boolean;
+  date: string;
 }
 
 class Popup extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      redirectH: false
+      redirectH: false,
+      date: "" //new Date().toString()
     };
   }
+
+  componentDidMount() {
+    this.getDate();
+  }
+
+  getDate = () => {
+    const time = new Date().toString();
+    this.setState({ date: time });
+  };
 
   setRedirectH = () => {
     this.setState({
@@ -28,9 +46,13 @@ class Popup extends Component<Props, State> {
   };
   renderRedirectH = () => {
     if (this.state.redirectH) {
-      return <Redirect to="/" />;
+      return <Redirect to="/HomePage" />;
     }
   };
+  closePopup() {
+    window.history.back();
+  }
+
   render() {
     return (
       <div className="popup">
@@ -46,11 +68,16 @@ class Popup extends Component<Props, State> {
             <button
               className="back"
               onClick={() => {
-                this.props.restartGame();
-                this.props.closePopup();
+                const result: Result = {
+                  id: Math.random() * 100,
+                  date: this.state.date,
+                  score: this.props.score
+                };
+                this.props.saveResult(result);
+                this.closePopup();
               }}
             >
-              Back to play again quiz
+              Save this result
             </button>
             <button
               className="back"
@@ -67,4 +94,18 @@ class Popup extends Component<Props, State> {
   }
 }
 
-export default Popup;
+function mapStateToProps(state: AppState) {
+  return {};
+}
+
+function mapDispatchToProps(dispatch: Dispatch<Action>) {
+  return {
+    saveResult: (result: Result) => dispatch(actions.saveResult(result)),
+    fetchQuestions: () => dispatch(actions.fetchQuestions())
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Popup);

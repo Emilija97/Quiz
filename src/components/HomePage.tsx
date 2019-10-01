@@ -3,18 +3,22 @@ import { Link } from "react-router-dom";
 import { Question } from "../models/Question";
 import { AppState } from "../store";
 import { Action } from "redux";
-import { fetchQuestions } from "../store/actions";
+import { fetchQuestions, fetchResults } from "../store/actions";
 import { connect } from "react-redux";
 import "../styles/HomePage.css";
+import { Result } from "../models/Result";
 
 interface Props {
   questions: Question[];
+  results: Result[];
   fetchQuestions: Function;
+  fetchResults: Function;
 }
 interface State {}
 class AppRoot extends Component<Props, State> {
   componentDidMount() {
-    if (this.props.questions.length === 1) this.props.fetchQuestions();
+    if (this.props.questions.length === 0) this.props.fetchQuestions();
+    if (this.props.results.length === 0) this.props.fetchResults();
   }
   render() {
     return (
@@ -28,23 +32,22 @@ class AppRoot extends Component<Props, State> {
           </li>
           <li>
             <button id="navigacija">
-              <Link to="/ToSelectQuestion">
-                Go to get information about questions
-              </Link>
+              <Link to="/ToSelectQuestion">Go to get information about questions</Link>
             </button>
           </li>
           <li>
             <button id="navigacija">
-              <Link to="/AddDeleteQuestion">
-                Go to add new question or delete some
-              </Link>
+              <Link to="/AddDeleteQuestion">Go to add new question or delete some</Link>
             </button>
           </li>
           <li>
             <button id="navigacija">
-              <Link to="/ChosenNumber">
-                Play quiz with specific number of question
-              </Link>
+              <Link to="/ChosenNumber">Play quiz with specific number of question</Link>
+            </button>
+          </li>
+          <li>
+            <button id="navigacija">
+              <Link to="/ShowResults">See list of achieved results</Link>
             </button>
           </li>
         </ul>
@@ -55,13 +58,15 @@ class AppRoot extends Component<Props, State> {
 
 function mapStateToProps(state: AppState) {
   return {
-    questions: state.questions
+    questions: state.questions,
+    results: state.results
   };
 }
 
 function mapDispatchToProps(dispatch: Dispatch<Action>) {
   return {
-    fetchQuestions: () => dispatch(fetchQuestions())
+    fetchQuestions: () => dispatch(fetchQuestions()),
+    fetchResults: () => dispatch(fetchResults())
   };
 }
 

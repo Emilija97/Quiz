@@ -3,11 +3,7 @@ import { Question } from "../models/Question";
 import { AppState } from "../store";
 import { connect } from "react-redux";
 import { Action } from "redux";
-import {
-  fetchQuestions,
-  deleteQuestionSaga,
-  fetchNewQuestion
-} from "../store/actions";
+import { fetchQuestions, deleteQuestionSaga, fetchNewQuestion } from "../store/actions";
 import "../styles/AddDelete.css";
 import QuestionCounter from "./QuestionCounter";
 
@@ -37,11 +33,14 @@ const initialState = {
   correctAnswer: ""
 };
 class AddDeleteQuestion extends Component<Props, State> {
-  state = initialState;
+  constructor(props: Props) {
+    super(props);
+    this.state = initialState;
+  }
 
   componentDidMount() {
     //da ne bi doslo do ucitavanja istih pitanja vise puta, nego da moze sa bilo koje stranice
-    if (this.props.questions.length === 1) this.props.fetchQuestions();
+    if (this.props.questions.length === 0) this.props.fetchQuestions();
   }
   render() {
     if (!this.props.questions) {
@@ -73,13 +72,6 @@ class AddDeleteQuestion extends Component<Props, State> {
           <div id="addDiv">
             <h3>Add question:</h3>
             <form>
-              <label>Question id: </label>
-              <input
-                type="number"
-                name="id"
-                value={this.state.id}
-                onChange={e => this.setState({ id: e.target.valueAsNumber })}
-              />
               <label>Question: </label>
               <input
                 type="text"
@@ -129,7 +121,7 @@ class AddDeleteQuestion extends Component<Props, State> {
               className="addBtn"
               onClick={() => {
                 const question: Question = {
-                  id: this.state.id,
+                  id: -1,
                   question: this.state.question,
                   answer1: this.state.answer1,
                   answer2: this.state.answer2,
@@ -159,10 +151,8 @@ function mapStateToProps(state: AppState) {
 function mapDispatchToProps(dispatch: Dispatch<Action>) {
   return {
     fetchQuestions: () => dispatch(fetchQuestions()),
-    fetchNewQuestion: (question: Question) =>
-      dispatch(fetchNewQuestion(question)),
-    deleteQuestionSaga: (questionId: number) =>
-      dispatch(deleteQuestionSaga(questionId))
+    fetchNewQuestion: (question: Question) => dispatch(fetchNewQuestion(question)),
+    deleteQuestionSaga: (questionId: number) => dispatch(deleteQuestionSaga(questionId))
   };
 }
 
