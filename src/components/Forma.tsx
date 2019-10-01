@@ -13,7 +13,6 @@ interface Props {
   closePopup: Function;
   restartGame: Function;
   saveResult: Function;
-  fetchQuestions: Function;
 }
 
 interface State {
@@ -100,8 +99,7 @@ function mapStateToProps(state: AppState) {
 
 function mapDispatchToProps(dispatch: Dispatch<Action>) {
   return {
-    saveResult: (result: Result) => dispatch(actions.saveResult(result)),
-    fetchQuestions: () => dispatch(actions.fetchQuestions())
+    saveResult: (result: Result) => dispatch(actions.saveResult(result))
   };
 }
 
