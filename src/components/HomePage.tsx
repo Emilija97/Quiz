@@ -10,16 +10,17 @@ import { Result } from "../models/Result";
 
 interface Props {
   questions: Question[];
-  results: Result[];
   fetchQuestions: Function;
+  results: Result[];
   fetchResults: Function;
 }
 interface State {}
 class AppRoot extends Component<Props, State> {
   componentDidMount() {
-    if (this.props.questions.length === 0) this.props.fetchQuestions();
+    if (this.props.questions.length === 1) this.props.fetchQuestions();
     if (this.props.results.length === 0) this.props.fetchResults();
   }
+
   render() {
     return (
       <div id="pocetna">

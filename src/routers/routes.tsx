@@ -11,7 +11,7 @@ import ShowResults from "../components/ShowResults";
 export const Routes = () => (
   <Switch>
     <Route exact path={"/"} component={HomePage} />
-    <Route path={"/ShowResults"} component={ShowResults} />
+    <Route exact path={"/ShowResults"} component={ShowResults} />
     <Route path={"/QuestionList"} component={QuestionList} />
     <Route path={"/ToSelectQuestion"} component={ToSelectQuestion} />
     <Route path={"/SelectedQuestion"} component={SelectedQuestion} />

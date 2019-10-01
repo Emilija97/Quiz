@@ -23,7 +23,8 @@ li {
 .dugmeLoad,
 .back,
 .deleteButton,
-.backHome {
+.backHome,
+.refresh {
     height: 25px;
     font-size: 18px;
     margin-top: 3px;
@@ -37,7 +38,8 @@ li {
 }
 
 .back,
-.dugmeLoad {
+.dugmeLoad,
+.refresh {
     width: 300px;
 }
 

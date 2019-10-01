@@ -40,7 +40,7 @@ class AddDeleteQuestion extends Component<Props, State> {
 
   componentDidMount() {
     //da ne bi doslo do ucitavanja istih pitanja vise puta, nego da moze sa bilo koje stranice
-    if (this.props.questions.length === 0) this.props.fetchQuestions();
+    if (this.props.questions.length === 1) this.props.fetchQuestions();
   }
   render() {
     if (!this.props.questions) {
@@ -121,7 +121,7 @@ class AddDeleteQuestion extends Component<Props, State> {
               className="addBtn"
               onClick={() => {
                 const question: Question = {
-                  id: -1,
+                  id: Math.random() * 100,
                   question: this.state.question,
                   answer1: this.state.answer1,
                   answer2: this.state.answer2,

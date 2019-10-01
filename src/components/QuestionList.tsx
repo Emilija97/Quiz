@@ -23,6 +23,7 @@ interface State {
   answer2: string;
   answer3: string;
   answer4: string;
+  correctAnswer: string;
   recently: number;
   score: number;
   showPopup: boolean;
@@ -36,6 +37,7 @@ const initialState = {
   answer2: "",
   answer3: "",
   answer4: "",
+  correctAnswer: "",
   recently: 0,
   score: 0,
   showPopup: false,
@@ -53,7 +55,7 @@ class QuestionList extends Component<Props, State> {
   }
 
   componentDidMount() {
-    if (this.props.questions.length === 0) {
+    if (this.props.questions.length === 1) {
       this.props.fetchQuestions();
     }
     this.pushData(this.state.recently);
@@ -147,10 +149,9 @@ class QuestionList extends Component<Props, State> {
   render() {
     let { recently, question, answer1, answer2, answer3, answer4, id } = this.state;
 
-    if (this.props.questions.length === 0) {
+    if (!this.props.questions) {
       return <h3>No questions</h3>;
     }
-
     return (
       <div className="maliDiv" key={id}>
         <p className="question">{question}</p>

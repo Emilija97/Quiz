@@ -64,7 +64,6 @@ function* saveResult(action: SaveResult) {
 
 function* fetchResults(action: FetchResults) {
   const results = yield getAllResults();
-  console.log(results);
   yield put(addResults(results));
 }
 

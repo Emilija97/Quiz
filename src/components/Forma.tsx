@@ -67,13 +67,21 @@ class Popup extends Component<Props, State> {
             <button
               className="back"
               onClick={() => {
+                this.props.restartGame();
+                this.props.closePopup();
+              }}
+            >
+              Back to play again quiz
+            </button>
+            <button
+              className="back"
+              onClick={() => {
                 const result: Result = {
                   id: Math.random() * 100,
                   date: this.state.date,
                   score: this.props.score
                 };
                 this.props.saveResult(result);
-                this.closePopup();
               }}
             >
               Save this result
