@@ -11,12 +11,16 @@ import {
   CheckUserSuccess,
   CHECK_USER_FAILURE,
   CheckUserFailure,
-  LOGOUT
+  LOGOUT,
+  REGISTER_SUCCESS,
+  REGISTER_FAILURE,
+  RegisterSuccess
 } from "./actions";
 
 export interface UserState {
   user: User;
   isLoggedIn: boolean;
+  registered: boolean;
   errorMessage: string;
 }
 
@@ -29,20 +33,10 @@ const initialState: UserState = {
     surname: "",
     score: 0
   },
+  registered: false,
   isLoggedIn: false,
   errorMessage: ""
 };
-
-// const initialState: User = new User();
-// const initialState = user ? { loggedIn: true, user } : {};
-// const initialState: User = {
-//   id: -1,
-//   username: "",
-//   password: "",
-//   name: "",
-//   surname: "",
-//   score: -1
-// };
 
 export function authReducer(state = initialState, action: Action) {
   switch (action.type) {
@@ -52,12 +46,13 @@ export function authReducer(state = initialState, action: Action) {
       console.log(user);
       let newState: UserState = {
         user: user,
+        registered: false,
         isLoggedIn: true,
         errorMessage: ""
       };
       localStorage.setItem("token", user.id);
       console.log(newState);
-      return { user: user, isLoggedIn: true, errorMessage: "" };
+      return { user: user, registered: false, isLoggedIn: true, errorMessage: "" };
       //   return newState;
     }
     case LOGIN_FAILURE: {
@@ -72,6 +67,7 @@ export function authReducer(state = initialState, action: Action) {
           surname: "",
           score: 0
         },
+        registered: false,
         isLoggedIn: false,
         errorMessage: "Username or password is invalid."
       };
@@ -79,7 +75,7 @@ export function authReducer(state = initialState, action: Action) {
     }
     case CHECK_USER_SUCCESS: {
       const { user } = action as CheckUserSuccess;
-      return { user: user, isLoggedIn: true, errorMessage: "" };
+      return { user: user, registered: false, isLoggedIn: true, errorMessage: "" };
     }
     case CHECK_USER_FAILURE: {
       const { errorMessage } = action as CheckUserFailure;
@@ -93,6 +89,7 @@ export function authReducer(state = initialState, action: Action) {
           surname: "",
           score: 0
         },
+        registered: false,
         isLoggedIn: true,
         errorMessage: errorMessage
       };
@@ -101,6 +98,11 @@ export function authReducer(state = initialState, action: Action) {
       localStorage.removeItem("token");
       return initialState;
     }
+    case REGISTER_SUCCESS: {
+      const { user } = action as RegisterSuccess;
+      return { user, registered: true, isLoggedIn: false, errorMessage: "" };
+    }
+    case REGISTER_FAILURE:
     default: {
       return state;
     }

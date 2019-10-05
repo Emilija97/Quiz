@@ -115,12 +115,7 @@ function* register(action: Register) {
   const user = action.user;
   console.log(user);
   const res = yield registerUser(user);
-  console.log(res.status);
-  // if (res.length > 0) {
-  //   yield put(registerFailure("Username or password is incorrect."));
-  // } else {
-  //   yield put(registerSuccess(user));
-  // }
+  yield put(registerSuccess(user));
   console.log(res);
 }
 

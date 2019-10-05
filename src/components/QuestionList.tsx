@@ -8,12 +8,14 @@ import "../styles/QuestionList.css";
 import { Action } from "redux";
 import QuestionCounter from "./QuestionCounter";
 import Popup from "./Forma";
+import { UserState } from "../store/auth-reducer";
 
 interface Props {
   questions: Question[];
   fetchQuestions: Function;
   numberOfQuestions: number;
   flag: boolean;
+  auth: UserState;
 }
 
 interface State {
@@ -205,7 +207,8 @@ class QuestionList extends Component<Props, State> {
 
 function mapStateToProps(state: AppState) {
   return {
-    questions: state.questions
+    questions: state.questions,
+    auth: state.auth
   };
 }
 

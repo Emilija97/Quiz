@@ -60,7 +60,7 @@ class LoginPage extends Component<Props, State> {
     } else
       return (
         <div className="col-md-6 col-md-offset-3">
-          <h3>Register </h3>
+          <h3>Login Page</h3>
           <form name="form" onSubmit={this.handleSubmit}>
             <div
               className={

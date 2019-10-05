@@ -20,12 +20,6 @@ export function getUserById(id: string) {
 }
 
 export function registerUser(user: User) {
-  // fetch(`${env.url}/users?username=${user.username}&password=${user.password}`, {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     }
-  //   })
   const res = logInUser(user.username, user.password);
   res.then(val => {
     if (val.length < 1) {
@@ -42,12 +36,14 @@ export function registerUser(user: User) {
           username: user.username,
           password: user.password
         })
-      }).then(response => {
-        console.log(response);
-        response.json();
-      });
+      })
+        .then(response => {
+          console.log(response);
+          response.json();
+        })
+        .catch(error => console.log(error));
     } else {
-      return;
+      return res;
     }
   });
   console.log(res);

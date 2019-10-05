@@ -59,8 +59,8 @@ class Register extends Component<Props, State> {
   }
 
   render() {
-    if (this.props.auth.isLoggedIn === true) {
-      return <Redirect to="/HomePage" />;
+    if (this.props.auth.registered === true) {
+      return <Redirect to="/LoginPage" />;
     } else
       return (
         <div className="col-md-6 col-md-offset-3">
