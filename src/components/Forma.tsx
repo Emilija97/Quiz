@@ -6,6 +6,7 @@ import { AppState } from "../store";
 import { Action } from "redux";
 import { Result } from "../models/Result";
 import * as actions from "../store/actions";
+import { UserState } from "../store/auth-reducer";
 
 interface Props {
   score: number;
@@ -13,6 +14,7 @@ interface Props {
   closePopup: Function;
   restartGame: Function;
   saveResult: Function;
+  auth: UserState;
 }
 
 interface State {
@@ -79,7 +81,8 @@ class Popup extends Component<Props, State> {
                 const result: Result = {
                   id: Math.random() * 100,
                   date: this.state.date,
-                  score: this.props.score
+                  score: this.props.score,
+                  username: this.props.auth.user.username
                 };
                 this.props.saveResult(result);
               }}
@@ -102,7 +105,9 @@ class Popup extends Component<Props, State> {
 }
 
 function mapStateToProps(state: AppState) {
-  return {};
+  return {
+    auth: state.auth
+  };
 }
 
 function mapDispatchToProps(dispatch: Dispatch<Action>) {

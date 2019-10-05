@@ -1,22 +1,25 @@
 import React, { Component, Dispatch } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Question } from "../models/Question";
 import { AppState } from "../store";
 import { Action } from "redux";
-import { fetchQuestions, fetchResults } from "../store/actions";
+import { fetchQuestions, fetchResults, logOut } from "../store/actions";
 import { connect } from "react-redux";
 import "../styles/HomePage.css";
 import { Result } from "../models/Result";
+import { UserState } from "../store/auth-reducer";
 
 interface Props {
   questions: Question[];
   fetchQuestions: Function;
   results: Result[];
   fetchResults: Function;
+  auth: UserState;
 }
 interface State {}
 class AppRoot extends Component<Props, State> {
   componentDidMount() {
+    console.log(this.props.auth);
     if (this.props.questions.length === 1) this.props.fetchQuestions();
     if (this.props.results.length === 0) this.props.fetchResults();
   }
@@ -51,6 +54,11 @@ class AppRoot extends Component<Props, State> {
               <Link to="/ShowResults">See list of achieved results</Link>
             </button>
           </li>
+          <li>
+            <button id="navigacija">
+              <Link to="/">Log out</Link>
+            </button>
+          </li>
         </ul>
       </div>
     );
@@ -60,7 +68,8 @@ class AppRoot extends Component<Props, State> {
 function mapStateToProps(state: AppState) {
   return {
     questions: state.questions,
-    results: state.results
+    results: state.results,
+    auth: state.auth
   };
 }
 

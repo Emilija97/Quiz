@@ -1,4 +1,4 @@
-import { all, takeEvery, put } from "redux-saga/effects";
+import { all, takeEvery, put, take } from "redux-saga/effects";
 import {
   FETCH_QUESTIONS,
   addQuestions,
@@ -18,7 +18,19 @@ import {
   FETCH_RESULTS,
   DeleteResult,
   deleteResultSuccess,
-  DELETE_RESULT
+  DELETE_RESULT,
+  LogIn,
+  LOGIN,
+  logInSuccess,
+  logInFailure,
+  CheckUser,
+  checkUserSuccess,
+  checkUserFailure,
+  CHECK_USER,
+  Register,
+  REGISTER,
+  registerFailure,
+  registerSuccess
 } from "./actions";
 import {
   getAllQuestions,
@@ -31,6 +43,8 @@ import {
   getAllResults,
   deleteResultById
 } from "../services/result.service";
+import { logInUser, getUserById, registerUser } from "../services/auth.service";
+import { User } from "../models/User";
 let offset = 0;
 
 function* fetchQuestions() {
@@ -73,6 +87,43 @@ function* deleteResult(action: DeleteResult) {
   yield put(deleteResultSuccess(resultId));
 }
 
+function* logIn(action: LogIn) {
+  const username = action.username;
+  const password = action.password;
+  console.log(username + ": " + password);
+  const res = yield logInUser(username, password);
+  console.log(res);
+  if (res.length > 0) {
+    yield put(logInSuccess(res[0]));
+  } else {
+    yield put(logInFailure(res));
+  }
+}
+
+function* checkUser(action: CheckUser) {
+  const id = action.id;
+  console.log("Logged user: " + id);
+  if (id) {
+    const res = yield getUserById(id);
+    if (res.length > 0) {
+      yield put(checkUserSuccess(res[0]));
+    } else yield put(checkUserFailure("User is not logged"));
+  }
+}
+
+function* register(action: Register) {
+  const user = action.user;
+  console.log(user);
+  const res = yield registerUser(user);
+  console.log(res.status);
+  // if (res.length > 0) {
+  //   yield put(registerFailure("Username or password is incorrect."));
+  // } else {
+  //   yield put(registerSuccess(user));
+  // }
+  console.log(res);
+}
+
 export function* rootSaga() {
   yield all([
     takeEvery(FETCH_QUESTIONS, fetchQuestions),
@@ -81,6 +132,9 @@ export function* rootSaga() {
     takeEvery(DELETE_QUESTION_SAGA, deleteQuestionSaga),
     takeEvery(SAVE_RESULT, saveResult),
     takeEvery(FETCH_RESULTS, fetchResults),
-    takeEvery(DELETE_RESULT, deleteResult)
+    takeEvery(DELETE_RESULT, deleteResult),
+    takeEvery(LOGIN, logIn),
+    takeEvery(CHECK_USER, checkUser),
+    takeEvery(REGISTER, register)
   ]);
 }

@@ -8,6 +8,7 @@ import { createBrowserHistory } from "history";
 import { Routes } from "./routers/routes";
 import createSagaMiddleware from "@redux-saga/core";
 import { rootSaga } from "./store/sagas";
+import { checkUser, CHECK_USER } from "./store/actions";
 
 export const env = {
   url: "http://localhost:3001"
@@ -16,6 +17,12 @@ export const env = {
 const sagaMiddleware = createSagaMiddleware();
 const questionStore = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(rootSaga);
+
+const token = localStorage.getItem("token");
+console.log(token);
+if (token) {
+  questionStore.dispatch(checkUser(token));
+}
 
 const history = createBrowserHistory();
 class App extends Component {

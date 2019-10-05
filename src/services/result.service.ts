@@ -10,7 +10,8 @@ export function postNewResult(result: Result) {
     },
     body: JSON.stringify({
       date: result.date,
-      score: result.score
+      score: result.score,
+      username: result.username
     })
   })
     .then(response => response.json())
