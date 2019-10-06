@@ -101,7 +101,7 @@ class Register extends Component<Props, State> {
                 onChange={e => this.setState({ surname: e.target.value })}
               />
               {this.state.submitted && !this.state.surname && (
-                <div className="help-block">Surame is required</div>
+                <div className="help-block">Surname is required</div>
               )}
             </div>
             <div
