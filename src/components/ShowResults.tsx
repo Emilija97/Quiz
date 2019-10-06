@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { fetchResults } from "../store/actions";
 import { Action } from "redux";
 import * as actions from "../store/actions";
-import "../styles/ToSelectQuestion.css";
+// import "../styles/ToSelectQuestion.css";
 import { Redirect } from "react-router";
 import { Result } from "../models/Result";
 
@@ -56,35 +56,50 @@ class ShowResults extends Component<Props, State> {
       return <h1>There isn't any result in database!</h1>;
     }
     return (
-      <div id="select">
+      <div id="select" className="d-flex flex-column align-content-center px-5 py-5">
         {this.renderRedirect()}
         <h3>See achieved results in the quiz:</h3>
-        <ol>
-          {this.props.results.map((result: Result) => (
-            <li key={result.id}>
-              <h5>Date and Time of achieved result:</h5>
-              <p className="showRes">{result.date} </p>
-              <p className="showRes">Achieved result: {result.score} </p>
-              <p className="showRes">Username: {result.username} </p>
-              <button
-                className="deleteButton"
-                onClick={() => {
-                  this.props.deleteResult(result.id);
-                }}
-              >
-                Delete result
-              </button>
-            </li>
-          ))}
-        </ol>
-        <button
-          className="backHome"
-          onClick={() => {
-            this.setRedirect();
-          }}
-        >
-          Back to the home page
-        </button>
+        <table className="table">
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">Date and Time of achieved result</th>
+              <th scope="col">Achieved result</th>
+              <th scope="col">Username</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.props.results.map((result: Result, index: number) => (
+              <tr key={result.id}>
+                <th scope="row">{index}</th>
+                <td>{result.date}</td>
+                <td>{result.score}</td>
+                <td>{result.username}</td>
+                <td>
+                  <button
+                    className="btn btn-info"
+                    onClick={() => {
+                      this.props.deleteResult(result.id);
+                    }}
+                  >
+                    Delete result
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <div className="d-flex col-5 offset-4">
+          <button
+            className="backHome btn btn-info btn-md"
+            onClick={() => {
+              this.setRedirect();
+            }}
+          >
+            Back to the home page
+          </button>
+        </div>
       </div>
     );
   }

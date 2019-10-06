@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Color } from "csstype";
 import { Question } from "../models/Question";
-import "../styles/QuestionList.css";
+// import "../styles/QuestionList.css";
 
 interface Props {
   naslov: string;
@@ -13,15 +13,15 @@ interface Props {
 }
 
 interface State {
+  className: string;
   disabled: boolean;
-  boja: Color;
 }
 
 class MojeDugme extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      boja: "white",
+      className: "btn btn-outline-info btn-block",
       disabled: false
     };
   }
@@ -29,9 +29,9 @@ class MojeDugme extends Component<Props, State> {
   render() {
     return (
       <button
-        style={{ backgroundColor: this.state.boja }}
+        type="button"
         disabled={this.state.disabled}
-        className="dugme"
+        className={this.state.className}
         onClick={() => {
           this.checkAnswer();
         }}
@@ -45,13 +45,19 @@ class MojeDugme extends Component<Props, State> {
     if (this.props.question.correctAnswer === this.props.answer) {
       this.props.increaseScore();
       this.setState({
-        disabled: true,
-        boja: "green"
+        className: " btn btn-success btn-block",
+        disabled: true
       });
     } else if (this.props.flagGame === true) {
-      this.setState({ boja: "red", disabled: true });
+      this.setState({
+        className: " btn btn-success btn-block",
+        disabled: true
+      });
     } else {
-      this.setState({ boja: "red", disabled: true });
+      this.setState({
+        className: " btn btn-danger btn-block",
+        disabled: true
+      });
       setTimeout(() => this.props.togglePopup(), 500);
     }
   };

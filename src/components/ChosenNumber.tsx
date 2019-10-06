@@ -7,7 +7,7 @@ import { fetchQuestions } from "../store/actions";
 import QuestionCounter from "./QuestionCounter";
 import QuestionList from "./QuestionList";
 import { Redirect } from "react-router";
-import "../styles/QuestionList.css";
+// import "../styles/QuestionList.css";
 
 interface Props {
   questions: Question[];
@@ -53,11 +53,11 @@ class ChosenNumber extends Component<Props, State> {
       return <h1>There isn't any question to choose!</h1>;
     }
     return (
-      <div id="chForma">
+      <div id="chForma" className="d-flex flex-column justify-content-center py-5 px-3">
         {this.renderRedirect()}
         <h3>Chose number of question:</h3>
         <form>
-          <label>Number of questions: </label>
+          <label className="font-weight-bold">Number of questions: </label>
           <input
             type="number"
             name="number"
@@ -74,15 +74,17 @@ class ChosenNumber extends Component<Props, State> {
             }
           />
         </form>
-        <button
-          className="next"
-          onClick={() => {
-            // this.setRedirect();
-            this.nextAction();
-          }}
-        >
-          Next
-        </button>
+        <div className="d-flex">
+          <button
+            className="next btn btn-info btn-md"
+            onClick={() => {
+              // this.setRedirect();
+              this.nextAction();
+            }}
+          >
+            Next
+          </button>
+        </div>
         <QuestionCounter />
         {this.state.showQuestionList ? (
           <QuestionList flag={true} numberOfQuestions={this.state.number} />

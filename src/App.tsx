@@ -8,7 +8,9 @@ import { createBrowserHistory } from "history";
 import { Routes } from "./routers/routes";
 import createSagaMiddleware from "@redux-saga/core";
 import { rootSaga } from "./store/sagas";
-import { checkUser, CHECK_USER } from "./store/actions";
+import { checkUser } from "./store/actions";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./styles/Home.css";
 
 export const env = {
   url: "http://localhost:3001"

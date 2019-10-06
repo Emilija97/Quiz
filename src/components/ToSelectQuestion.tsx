@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { selectQuestion } from "../store/actions";
 import { Action } from "redux";
 import * as actions from "../store/actions";
-import "../styles/ToSelectQuestion.css";
+// import "../styles/ToSelectQuestion.css";
 import { Redirect } from "react-router";
 
 interface Props {
@@ -44,33 +44,50 @@ class ToSelectQuestion extends Component<Props, State> {
       return <h1>There isn't any question to select!</h1>;
     }
     return (
-      <div id="select">
+      <div className="d-flex flex-column align-content-center col-lg-7 offset-lg-2 py-5">
         {this.renderRedirect()}
-        <h3>Get information what is correct answer on some question:</h3>
-        <ol>
-          {this.props.questionList.map((question: Question) => (
-            <li key={question.id}>
-              <p className="selectP">{question.question} </p>
-              <button
-                className="dugmeSelect"
-                onClick={() => {
-                  this.props.selectQuestion(question);
-                  this.setRedirect();
-                }}
-              >
-                Select
-              </button>
-            </li>
-          ))}
-        </ol>
-        <button
-          className="dugmeLoad"
-          onClick={() => {
-            this.props.fetchNumberOfQuestions();
-          }}
-        >
-          Load more questions
-        </button>
+        <h3 className="font-italic">
+          Get information what is correct answer on some question:
+        </h3>
+        <table className="table">
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">Question</th>
+              <th scope="col">Choose</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.props.questionList.map((question: Question, index: number) => (
+              <tr key={question.id}>
+                <th scope="row">{index}</th>
+                <td>{question.question}</td>
+                <td>
+                  <button
+                    className="dugmeSelect btn btn-info"
+                    onClick={() => {
+                      this.props.selectQuestion(question);
+                      this.setRedirect();
+                    }}
+                  >
+                    Select
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <div className="d-flex col-5 offset-4">
+          <button
+            className="dugmeLoad btn btn-info btn-md"
+            onClick={() => {
+              this.props.fetchNumberOfQuestions();
+            }}
+          >
+            Load more questions
+          </button>
+        </div>
       </div>
     );
   }

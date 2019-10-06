@@ -1,5 +1,5 @@
 import React, { Component, Dispatch } from "react";
-import "../styles/QuestionList.css";
+// import "../styles/QuestionList.css";
 import { Redirect } from "react-router";
 import { connect } from "react-redux";
 import { AppState } from "../store";
@@ -7,7 +7,6 @@ import { Action } from "redux";
 import { Result } from "../models/Result";
 import * as actions from "../store/actions";
 import { UserState } from "../store/auth-reducer";
-import { keepUser } from "../App";
 
 interface Props {
   score: number;
@@ -54,23 +53,22 @@ class Popup extends Component<Props, State> {
   };
   closePopup() {
     window.history.back();
-    // keepUser();
   }
 
   render() {
     return (
-      <div className="popup">
+      <div className="popup flex position-fixed h-50 mr-5 bg-light">
         {this.renderRedirectH()}
         <div className="popup_inner">
-          <h3 className="response">
+          <h3 className="response font-italic text-center">
             Well done, you finished the game with {this.props.score} points of{" "}
             {this.props.maxScore}!
           </h3>
-          <h3>Choose your next action:</h3>
+          <h3 className="font-italic text-center">Choose your next action:</h3>
 
-          <div className="formaBack">
+          <div className="formaBack d-flex flex-column">
             <button
-              className="back"
+              className="back btn btn-block btn-outline-success"
               onClick={() => {
                 this.props.restartGame();
                 this.props.closePopup();
@@ -79,7 +77,7 @@ class Popup extends Component<Props, State> {
               Back to play again quiz
             </button>
             <button
-              className="back"
+              className="back btn btn-block btn-outline-success"
               onClick={() => {
                 const result: Result = {
                   id: Math.random() * 100,
@@ -93,7 +91,7 @@ class Popup extends Component<Props, State> {
               Save this result
             </button>
             <button
-              className="back"
+              className="back btn btn-block btn-outline-success"
               onClick={() => {
                 this.setRedirectH();
               }}

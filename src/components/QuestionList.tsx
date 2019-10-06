@@ -4,12 +4,11 @@ import { AppState } from "../store";
 import { connect } from "react-redux";
 import MojeDugme from "./Button";
 import * as actions from "../store/actions";
-import "../styles/QuestionList.css";
+// import "../styles/QuestionList.css";
 import { Action } from "redux";
 import QuestionCounter from "./QuestionCounter";
 import Popup from "./Forma";
 import { UserState } from "../store/auth-reducer";
-import { keepUser } from "../App";
 
 interface Props {
   questions: Question[];
@@ -62,7 +61,6 @@ class QuestionList extends Component<Props, State> {
       this.props.fetchQuestions();
     }
     this.pushData(this.state.recently);
-    // keepUser();
     console.log(this.props.auth);
   }
 
@@ -100,19 +98,18 @@ class QuestionList extends Component<Props, State> {
 
   restartGame() {
     window.location.reload();
-    // keepUser();
   }
 
   prikazi() {
     if (this.props.numberOfQuestions !== undefined) {
       return (
-        <p className="result">
+        <p className="result font-weight-bold">
           {this.state.score} / {this.props.numberOfQuestions}
         </p>
       );
     } else
       return (
-        <p className="result">
+        <p className="result text-center font-weight-bold">
           {this.state.score} / {this.props.questions.length}
         </p>
       );
@@ -164,10 +161,13 @@ class QuestionList extends Component<Props, State> {
       return <h3>No questions</h3>;
     }
     return (
-      <div className="maliDiv" key={id}>
-        <p className="question">{question}</p>
+      <div
+        className="maliDiv d-flex flex-column align-content-center col-sm-4 offset-sm-4 py-5"
+        key={id}
+      >
+        <p className="question mb-0 font-weight-bold">{question}</p>
         {this.prikazi()}
-        <div id="dugmad">
+        <div id="dugmad" className="d-flex flex-column">
           <MojeDugme
             increaseScore={this.handleIncreaseScore}
             question={this.props.questions[recently - 1]}
@@ -201,7 +201,10 @@ class QuestionList extends Component<Props, State> {
             answer="D"
           />
         </div>
-        <button className="next" onClick={() => this.nextQuestion()}>
+        <button
+          className="next btn btn-info btn-block mt-1"
+          onClick={() => this.nextQuestion()}
+        >
           Next
         </button>
 

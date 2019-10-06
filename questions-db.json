@@ -346,6 +346,12 @@
             "score": 10,
             "username": "ilija@gmail.com",
             "id": 22
+        },
+        {
+            "date": "Sun Oct 06 2019 21:01:34 GMT+0200 (Central European Summer Time)",
+            "score": 10,
+            "username": "emilija@gmail.com",
+            "id": 23
         }
     ]
 }

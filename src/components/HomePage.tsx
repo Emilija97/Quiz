@@ -5,7 +5,7 @@ import { AppState } from "../store";
 import { Action } from "redux";
 import { fetchQuestions, fetchResults, logOut } from "../store/actions";
 import { connect } from "react-redux";
-import "../styles/HomePage.css";
+// import "../styles/HomePage.css";
 import { Result } from "../models/Result";
 import { UserState } from "../store/auth-reducer";
 
@@ -26,40 +26,41 @@ class AppRoot extends Component<Props, State> {
 
   render() {
     return (
-      <div id="pocetna">
+      <div
+        id="pocetna"
+        className="d-flex flex-column text-center align-content-lg-start py-5"
+      >
         <h2>Welcome to the QUIZ</h2>
-        <ul>
-          <li>
-            <button id="navigacija">
-              <Link to="/QuestionList">Go to quiz</Link>
-            </button>
-          </li>
-          <li>
-            <button id="navigacija">
-              <Link to="/ToSelectQuestion">Go to get information about questions</Link>
-            </button>
-          </li>
-          <li>
-            <button id="navigacija">
-              <Link to="/AddDeleteQuestion">Go to add new question or delete some</Link>
-            </button>
-          </li>
-          <li>
-            <button id="navigacija">
-              <Link to="/ChosenNumber">Play quiz with specific number of question</Link>
-            </button>
-          </li>
-          <li>
-            <button id="navigacija">
-              <Link to="/ShowResults">See list of achieved results</Link>
-            </button>
-          </li>
-          <li>
-            <button id="navigacija">
-              <Link to="/">Log out</Link>
-            </button>
-          </li>
-        </ul>
+        <div>
+          <button id="navigacija" className="btn btn-link">
+            <Link to="/QuestionList">Go to quiz</Link>
+          </button>
+        </div>
+        <div>
+          <button id="navigacija" className="btn btn-link">
+            <Link to="/ToSelectQuestion">Go to get information about questions</Link>
+          </button>
+        </div>
+        <div>
+          <button id="navigacija" className="btn btn-link">
+            <Link to="/AddDeleteQuestion">Go to add new question or delete some</Link>
+          </button>
+        </div>
+        <div>
+          <button id="navigacija" className="btn btn-link">
+            <Link to="/ChosenNumber">Play quiz with specific number of question</Link>
+          </button>
+        </div>
+        <div>
+          <button id="navigacija" className="btn btn-link">
+            <Link to="/ShowResults">See list of achieved results</Link>
+          </button>
+        </div>
+        <div>
+          <button id="navigacija" className="btn btn-link">
+            <Link to="/">Log out</Link>
+          </button>
+        </div>
       </div>
     );
   }

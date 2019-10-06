@@ -64,7 +64,7 @@ class Register extends Component<Props, State> {
       return <Redirect to="/LoginPage" />;
     } else
       return (
-        <div className="col-md-6 col-md-offset-3">
+        <div className="flex col-md-4 offset-md-4 py-5">
           <h3>Register page </h3>
           <h3>{this.props.auth.errorMessage}</h3>
           <form name="form" onSubmit={this.handleSubmit}>

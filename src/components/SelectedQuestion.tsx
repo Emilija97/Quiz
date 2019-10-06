@@ -3,7 +3,7 @@ import { AppState } from "../store";
 import { Action } from "redux";
 import { connect } from "react-redux";
 import { Question } from "../models/Question";
-import "../styles/ToSelectQuestion.css";
+// import "../styles/ToSelectQuestion.css";
 import { Redirect } from "react-router";
 
 interface Props {
@@ -38,9 +38,9 @@ class SelectedQuestion extends Component<Props, State> {
       return <p>Selektovano pitanje: -</p>;
     }
     return (
-      <div>
+      <div className="d-flex flex-column align-content-center col-lg-7 offset-lg-2 py-5">
         {this.renderRedirect()}
-        <p className="response">
+        <p className="response font-weight-bold font-italic">
           Odgovor na pitanje: {this.props.selectedQuestion.question}{" "}
           {this.props.selectedQuestion.correctAnswer === "A"
             ? this.props.selectedQuestion.answer1
@@ -50,14 +50,16 @@ class SelectedQuestion extends Component<Props, State> {
             ? this.props.selectedQuestion.answer3
             : this.props.selectedQuestion.answer4}
         </p>
-        <button
-          className="back"
-          onClick={() => {
-            this.setRedirect();
-          }}
-        >
-          Back to select another question
-        </button>
+        <div className="d-flex col-5 offset-4">
+          <button
+            className="back btn btn-info"
+            onClick={() => {
+              this.setRedirect();
+            }}
+          >
+            Back to select another question
+          </button>
+        </div>
       </div>
     );
   }

@@ -3,7 +3,7 @@ import { AppState } from "../store";
 import { Action } from "redux";
 import { connect } from "react-redux";
 import { Question } from "../models/Question";
-import "../styles/ToSelectQuestion.css";
+// import "../styles/ToSelectQuestion.css";
 interface Props {
   questions?: Question[];
 }
@@ -13,11 +13,11 @@ interface State {}
 class QuestionCounter extends Component<Props, State> {
   render() {
     if (!this.props.questions) {
-      return <p>Total Questions: 0</p>;
+      return <p className="font-italic font-weight-bold">Total Questions: 0</p>;
     }
     return (
       <div>
-        <p className="counter">
+        <p className="counter font-italic font-weight-bold">
           Total Questions: {this.props.questions.length}
         </p>
       </div>
