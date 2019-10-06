@@ -46,7 +46,7 @@ class ChosenNumber extends Component<Props, State> {
   }
   componentDidMount() {
     //da ne bi doslo do ucitavanja istih pitanja vise puta, nego da moze sa bilo koje stranice
-    if (this.props.questions.length === 0) this.props.fetchQuestions();
+    if (this.props.questions.length === 1) this.props.fetchQuestions();
   }
   render() {
     if (!this.props.questions) {

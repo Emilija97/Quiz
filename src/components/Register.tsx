@@ -7,6 +7,7 @@ import * as actions from "../store/actions";
 import { authReducer, UserState } from "../store/auth-reducer";
 import { Link, Redirect } from "react-router-dom";
 import { userInfo } from "os";
+import { timingSafeEqual } from "crypto";
 
 interface Props {
   register: Function;
@@ -65,6 +66,7 @@ class Register extends Component<Props, State> {
       return (
         <div className="col-md-6 col-md-offset-3">
           <h3>Register page </h3>
+          <h3>{this.props.auth.errorMessage}</h3>
           <form name="form" onSubmit={this.handleSubmit}>
             <div
               className={

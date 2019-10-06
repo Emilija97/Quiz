@@ -7,6 +7,7 @@ import { Action } from "redux";
 import { Result } from "../models/Result";
 import * as actions from "../store/actions";
 import { UserState } from "../store/auth-reducer";
+import { keepUser } from "../App";
 
 interface Props {
   score: number;
@@ -33,6 +34,7 @@ class Popup extends Component<Props, State> {
 
   componentDidMount() {
     this.getDate();
+    console.log(this.props.auth);
   }
 
   getDate = () => {
@@ -52,6 +54,7 @@ class Popup extends Component<Props, State> {
   };
   closePopup() {
     window.history.back();
+    // keepUser();
   }
 
   render() {

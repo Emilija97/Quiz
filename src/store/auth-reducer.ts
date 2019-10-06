@@ -14,7 +14,8 @@ import {
   LOGOUT,
   REGISTER_SUCCESS,
   REGISTER_FAILURE,
-  RegisterSuccess
+  RegisterSuccess,
+  RegisterFailure
 } from "./actions";
 
 export interface UserState {
@@ -74,10 +75,12 @@ export function authReducer(state = initialState, action: Action) {
       return newState;
     }
     case CHECK_USER_SUCCESS: {
+      console.log("Usao sam u success");
       const { user } = action as CheckUserSuccess;
       return { user: user, registered: false, isLoggedIn: true, errorMessage: "" };
     }
     case CHECK_USER_FAILURE: {
+      console.log("Usao sam u failure");
       const { errorMessage } = action as CheckUserFailure;
       localStorage.removeItem("token");
       return {
@@ -102,7 +105,22 @@ export function authReducer(state = initialState, action: Action) {
       const { user } = action as RegisterSuccess;
       return { user, registered: true, isLoggedIn: false, errorMessage: "" };
     }
-    case REGISTER_FAILURE:
+    case REGISTER_FAILURE: {
+      const { errorMessage } = action as RegisterFailure;
+      return {
+        user: {
+          id: "",
+          username: "",
+          password: "",
+          name: "",
+          surname: "",
+          score: 0
+        },
+        registered: false,
+        isLoggedIn: false,
+        errorMessage: errorMessage
+      };
+    }
     default: {
       return state;
     }

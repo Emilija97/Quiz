@@ -18,11 +18,15 @@ const sagaMiddleware = createSagaMiddleware();
 const questionStore = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(rootSaga);
 
-const token = localStorage.getItem("token");
-console.log(token);
-if (token) {
-  questionStore.dispatch(checkUser(token));
+export function keepUser() {
+  const token = localStorage.getItem("token");
+  console.log(token);
+  if (token) {
+    questionStore.dispatch(checkUser(token));
+  }
 }
+
+keepUser();
 
 const history = createBrowserHistory();
 class App extends Component {

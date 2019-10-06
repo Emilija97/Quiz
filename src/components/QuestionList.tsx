@@ -9,6 +9,7 @@ import { Action } from "redux";
 import QuestionCounter from "./QuestionCounter";
 import Popup from "./Forma";
 import { UserState } from "../store/auth-reducer";
+import { keepUser } from "../App";
 
 interface Props {
   questions: Question[];
@@ -61,6 +62,12 @@ class QuestionList extends Component<Props, State> {
       this.props.fetchQuestions();
     }
     this.pushData(this.state.recently);
+    // keepUser();
+    console.log(this.props.auth);
+  }
+
+  componentWillReceiveProps() {
+    console.log(this.props.auth);
   }
 
   nextQuestion() {
@@ -93,6 +100,7 @@ class QuestionList extends Component<Props, State> {
 
   restartGame() {
     window.location.reload();
+    // keepUser();
   }
 
   prikazi() {
@@ -136,6 +144,7 @@ class QuestionList extends Component<Props, State> {
           />
         );
       } else {
+        // keepUser();
         return (
           <Popup
             score={this.state.score}

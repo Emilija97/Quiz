@@ -65,6 +65,7 @@ class ShowResults extends Component<Props, State> {
               <h5>Date and Time of achieved result:</h5>
               <p className="showRes">{result.date} </p>
               <p className="showRes">Achieved result: {result.score} </p>
+              <p className="showRes">Username: {result.username} </p>
               <button
                 className="deleteButton"
                 onClick={() => {

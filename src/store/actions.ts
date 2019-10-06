@@ -229,13 +229,13 @@ export function checkUser(id: string): CheckUser {
 
 export function checkUserSuccess(user: User): CheckUserSuccess {
   return {
-    type: CHECK_USER,
+    type: CHECK_USER_SUCCESS,
     user
   };
 }
 export function checkUserFailure(errorMessage: string): CheckUserFailure {
   return {
-    type: CHECK_USER,
+    type: CHECK_USER_FAILURE,
     errorMessage
   };
 }

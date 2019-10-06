@@ -43,7 +43,12 @@ import {
   getAllResults,
   deleteResultById
 } from "../services/result.service";
-import { logInUser, getUserById, registerUser } from "../services/auth.service";
+import {
+  logInUser,
+  getUserById,
+  registerUser,
+  getAllUsers
+} from "../services/auth.service";
 import { User } from "../models/User";
 let offset = 0;
 
@@ -105,8 +110,10 @@ function* checkUser(action: CheckUser) {
   console.log("Logged user: " + id);
   if (id) {
     const res = yield getUserById(id);
-    if (res.length > 0) {
-      yield put(checkUserSuccess(res[0]));
+    console.log(res);
+    if (res) {
+      console.log("Usao sam da pozovem success");
+      yield put(checkUserSuccess(res));
     } else yield put(checkUserFailure("User is not logged"));
   }
 }
@@ -114,9 +121,14 @@ function* checkUser(action: CheckUser) {
 function* register(action: Register) {
   const user = action.user;
   console.log(user);
-  const res = yield registerUser(user);
-  yield put(registerSuccess(user));
-  console.log(res);
+  const res = yield getAllUsers();
+  const obj = res.filter((us: User) => us.username === user.username);
+  if (obj.length === 0) {
+    yield registerUser(user);
+    yield put(registerSuccess(user));
+  } else {
+    yield put(registerFailure("Username is already taken."));
+  }
 }
 
 export function* rootSaga() {

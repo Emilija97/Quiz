@@ -18,33 +18,26 @@ export function getUserById(id: string) {
     .then(response => response.json())
     .catch(error => console.log(error));
 }
-
+export function getAllUsers() {
+  return fetch(`${env.url}/users`).then(response => response.json());
+}
 export function registerUser(user: User) {
-  const res = logInUser(user.username, user.password);
-  res.then(val => {
-    if (val.length < 1) {
-      console.log(val);
-      return fetch(`${env.url}/users`, {
-        method: "POST",
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          name: user.name,
-          surname: user.surname,
-          username: user.username,
-          password: user.password
-        })
-      })
-        .then(response => {
-          console.log(response);
-          response.json();
-        })
-        .catch(error => console.log(error));
-    } else {
-      return res;
-    }
-  });
-  console.log(res);
+  return fetch(`${env.url}/users`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json, text/plain, */*",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: user.name,
+      surname: user.surname,
+      username: user.username,
+      password: user.password
+    })
+  })
+    .then(response => {
+      console.log(response);
+      response.json();
+    })
+    .catch(error => console.log(error));
 }

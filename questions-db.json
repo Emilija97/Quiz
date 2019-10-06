@@ -283,44 +283,23 @@
             "password": "123Abc",
             "name": "Ema",
             "surname": "Tomovic"
+        },
+        {
+            "name": "Ema",
+            "surname": "Emic",
+            "username": "ema@gmail.com",
+            "password": "123456",
+            "id": "H5v5-Zd"
+        },
+        {
+            "name": "Ilija",
+            "surname": "Ilijic",
+            "username": "ilija@gmail.com",
+            "password": "123Abc",
+            "id": "5A59QtD"
         }
     ],
     "results": [{
-            "date": "Mon Sep 30 2019 23:00:44 GMT+0200 (Central European Summer Time)",
-            "score": 9,
-            "id": 3
-        },
-        {
-            "date": "Mon Sep 30 2019 23:56:24 GMT+0200 (Central European Summer Time)",
-            "score": 2,
-            "id": 4
-        },
-        {
-            "date": "Tue Oct 01 2019 02:28:12 GMT+0200 (Central European Summer Time)",
-            "score": 5,
-            "id": 6
-        },
-        {
-            "date": "Tue Oct 01 2019 02:35:06 GMT+0200 (Central European Summer Time)",
-            "score": 0,
-            "id": 10
-        },
-        {
-            "date": "Tue Oct 01 2019 11:48:25 GMT+0200 (Central European Summer Time)",
-            "score": 20,
-            "id": 12
-        },
-        {
-            "date": "Tue Oct 01 2019 12:43:20 GMT+0200 (Central European Summer Time)",
-            "score": 10,
-            "id": 13
-        },
-        {
-            "date": "Sat Oct 05 2019 16:48:20 GMT+0200 (Central European Summer Time)",
-            "score": 1,
-            "id": 14
-        },
-        {
             "date": "Sat Oct 05 2019 17:42:02 GMT+0200 (Central European Summer Time)",
             "score": 3,
             "username": "emilija@gmail.com",
@@ -337,6 +316,36 @@
             "score": 3,
             "username": "emilija@gmail.com",
             "id": 17
+        },
+        {
+            "date": "Sun Oct 06 2019 00:47:17 GMT+0200 (Central European Summer Time)",
+            "score": 4,
+            "username": "emilija@gmail.com",
+            "id": 18
+        },
+        {
+            "date": "Sun Oct 06 2019 10:14:17 GMT+0200 (Central European Summer Time)",
+            "score": 1,
+            "username": "emili@gmail.com",
+            "id": 19
+        },
+        {
+            "date": "Sun Oct 06 2019 10:14:59 GMT+0200 (Central European Summer Time)",
+            "score": 3,
+            "username": "emili@gmail.com",
+            "id": 20
+        },
+        {
+            "date": "Sun Oct 06 2019 13:54:59 GMT+0200 (Central European Summer Time)",
+            "score": 6,
+            "username": "ilija@gmail.com",
+            "id": 21
+        },
+        {
+            "date": "Sun Oct 06 2019 13:55:38 GMT+0200 (Central European Summer Time)",
+            "score": 10,
+            "username": "ilija@gmail.com",
+            "id": 22
         }
     ]
 }
