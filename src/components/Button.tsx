@@ -45,17 +45,17 @@ class MojeDugme extends Component<Props, State> {
     if (this.props.question.correctAnswer === this.props.answer) {
       this.props.increaseScore();
       this.setState({
-        className: " btn btn-success btn-block",
+        className: "btn btn-success btn-block",
         disabled: true
       });
     } else if (this.props.flagGame === true) {
       this.setState({
-        className: " btn btn-success btn-block",
+        className: "btn btn-danger btn-block",
         disabled: true
       });
     } else {
       this.setState({
-        className: " btn btn-danger btn-block",
+        className: "btn btn-danger btn-block",
         disabled: true
       });
       setTimeout(() => this.props.togglePopup(), 500);

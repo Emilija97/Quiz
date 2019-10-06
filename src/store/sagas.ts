@@ -95,9 +95,7 @@ function* deleteResult(action: DeleteResult) {
 function* logIn(action: LogIn) {
   const username = action.username;
   const password = action.password;
-  console.log(username + ": " + password);
   const res = yield logInUser(username, password);
-  console.log(res);
   if (res.length > 0) {
     yield put(logInSuccess(res[0]));
   } else {
@@ -107,12 +105,9 @@ function* logIn(action: LogIn) {
 
 function* checkUser(action: CheckUser) {
   const id = action.id;
-  console.log("Logged user: " + id);
   if (id) {
     const res = yield getUserById(id);
-    console.log(res);
     if (res) {
-      console.log("Usao sam da pozovem success");
       yield put(checkUserSuccess(res));
     } else yield put(checkUserFailure("User is not logged"));
   }
@@ -120,7 +115,6 @@ function* checkUser(action: CheckUser) {
 
 function* register(action: Register) {
   const user = action.user;
-  console.log(user);
   const res = yield getAllUsers();
   const obj = res.filter((us: User) => us.username === user.username);
   if (obj.length === 0) {
