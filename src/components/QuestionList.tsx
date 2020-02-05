@@ -57,7 +57,7 @@ class QuestionList extends Component<Props, State> {
   }
 
   componentDidMount() {
-    if (this.props.questions.length === 1) {
+    if (this.props.questions.length === 0) {
       this.props.fetchQuestions();
     }
     this.pushData(this.state.recently);
@@ -230,7 +230,4 @@ function mapDispatchToProps(dispatch: Dispatch<Action>) {
   };
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(QuestionList);
+export default connect(mapStateToProps, mapDispatchToProps)(QuestionList);

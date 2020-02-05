@@ -13,7 +13,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/Home.css";
 
 export const env = {
-  url: "http://localhost:3001"
+  url: "http://localhost:3002"
 };
 
 const sagaMiddleware = createSagaMiddleware();

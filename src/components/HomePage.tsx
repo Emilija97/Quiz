@@ -20,7 +20,7 @@ interface State {}
 class AppRoot extends Component<Props, State> {
   componentDidMount() {
     console.log(this.props.auth);
-    if (this.props.questions.length === 1) this.props.fetchQuestions();
+    if (this.props.questions.length === 0) this.props.fetchQuestions();
     if (this.props.results.length === 0) this.props.fetchResults();
   }
 
@@ -81,7 +81,4 @@ function mapDispatchToProps(dispatch: Dispatch<Action>) {
   };
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AppRoot);
+export default connect(mapStateToProps, mapDispatchToProps)(AppRoot);
